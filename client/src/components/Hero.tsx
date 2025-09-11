@@ -2,14 +2,14 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import BackgroundImage from "../assets/images/DS_bg.jpg";
+import DSBackground from "../assets/images/DS_bg.jpg";
 import ProfilePic from "../assets/images/Pic02.png";
 
 // Container with background image
 const HeroSection = styled.section`
     height: 100vh;
     width: 100%;
-    background: url(${BackgroundImage}) center/cover no-repeat;
+    background: url(${DSBackground}) center/cover no-repeat;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,7 +142,7 @@ const Hero: React.FC = () => {
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 1.0 }}
                 >
-                    Gather. Query. Reveal.
+                    Gather. Query. Refine.
                 </Tagline>
 
                 <ContactButton
