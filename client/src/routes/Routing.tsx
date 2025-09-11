@@ -1,12 +1,13 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
 import RoutingPath from "./RoutingPath";
-
 import Home from "../pages/Home";
 import About from "../pages/AboutPage";
 import Skills from "../pages/SkillsPage";
 import Projects from "../pages/ProjectsPage";
 import Contact from "../pages/ContactPage";
+
+import TrichMind from "../components/projects/TrichMind";
 
 export const Routing: React.FC = () => {
     return (
@@ -16,6 +17,7 @@ export const Routing: React.FC = () => {
             <Route path={RoutingPath.SKILLS} element={<Skills />} />
             <Route path={RoutingPath.PROJECTS} element={<Projects />} />
             <Route path={RoutingPath.CONTACT} element={<Contact />} />
+            <Route path={RoutingPath.TRICHMIND} element={<TrichMind />} />
         </Routes>
     );
 };
