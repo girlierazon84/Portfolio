@@ -3,10 +3,8 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import RoutingPath from "../routes/RoutingPath";
-
-// ✅ Import background & logo
-import DSBackground from "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/DS_bg.jpg";
-import PortfolioLogo from "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/portfolio_logo_01.png";
+import DSBackground from "../assets/images/DS_bg.jpg";
+import PortfolioLogo from "../assets/images/portfolio_logo.png"; // ✅ Import logo
 
 // Fade-down animation for mobile menu
 const fadeDown = keyframes`
