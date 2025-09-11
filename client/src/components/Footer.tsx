@@ -4,7 +4,7 @@ import styled from "styled-components";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
-import bgImage from "../assets/images/DS_bg.jpg"; // ✅ Import background
+import DSBackground from "../assets/images/DS_bg.jpg"; // ✅ Import background
 
 const FooterContainer = styled.footer`
     position: fixed;
@@ -23,7 +23,7 @@ const FooterContainer = styled.footer`
     overflow: hidden;
 
     // Background with dark overlay + blur
-    background: url(${bgImage}) center/cover no-repeat;
+    background: url(${DSBackground}) center/cover no-repeat;
     position: relative;
 
     &::before {
