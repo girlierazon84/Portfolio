@@ -5,9 +5,8 @@ import { motion } from "framer-motion";
 import { createMessage } from "../assets/api/service/MessageService";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
-import DSBackground from "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/DS_bg.jpg";
-import Pic03 from "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/Pic03.png";
+import DSBackground from "../assets/images/DS_bg.jpg";
+import Pic03 from "../assets/images/Pic03.png";
 
 const ContactSection = styled.section`
     width: 100%;
