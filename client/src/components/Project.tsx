@@ -2,8 +2,8 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import DSBackground from "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/DS_bg.jpg";
-import Pic01 from "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/Pic01.png";
+import DSBackground from "../assets/images/DS_bg.jpg";
+import Pic01 from "../assets/images/Pic01.png";
 
 const ProjectsSection = styled.section`
     width: 100%;
