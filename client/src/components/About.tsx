@@ -2,14 +2,14 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import backgroundImage from "../assets/images/DS_bg.jpg";
+import DSBackground from "../assets/images/DS_bg.jpg";
 
 const AboutSection = styled.section`
     width: 100%;
     height: 100vh;
     position: relative;
     padding: 8rem 1.5rem;
-    background-image: url(${backgroundImage});
+    background-image: url(${DSBackground});
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
