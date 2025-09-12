@@ -59,7 +59,7 @@ const ProfileImage = styled(motion.img)`
 const NameTitle = styled(motion.h1)`
     font-size: 2rem;
     font-weight: 800;
-    background: linear-gradient(225deg, #0cc4a8, #a78bfa);
+    background-image: linear-gradient(270deg, #f3c408, #0cc4a8, #a78bfa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 `;
