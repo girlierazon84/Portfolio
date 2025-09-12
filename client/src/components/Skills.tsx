@@ -39,8 +39,9 @@ const Title = styled.h2`
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
-    @media (min-width: 360px) {
+    @media (max-width: 768px) {
         margin-top: 0;
+        font-size: 1.5rem;
     }
 `;
 
