@@ -2,115 +2,276 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-// ✅ Use your uploaded mockup here
-import TrichMindImage from "../../assets/images/mock_up.png";
 
-const ProjectContainer = styled(motion.div)`
+import DSBackground from "../../assets/images/DS_bg.jpg";
+import TrichMindLogo from "../../assets/images/app_logo.png";
+
+import BestModelReport from "../../assets/images/best_model_classification_report.png";
+import Demographics from "../../assets/images/demographics.png";
+import CorrHeatmap from "../../assets/images/corr_heatmap.png";
+import Confusion from "../../assets/images/confusion.png";
+import BehaviourAwareness from "../../assets/images/behaviour_freq_awareness.png";
+import MockUp from "../../assets/images/mock_up.png";
+
+const ProjectSection = styled.section`
+    width: 100%;
+    min-height: 100vh;
+    padding: 5rem 1.5rem;
+    background: url(${DSBackground}) center/cover no-repeat;
+    position: relative;
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    background: rgba(17, 24, 39, 0.85);
-    border-radius: 1rem;
-    padding: 2rem;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
-    max-width: 1000px;
-    margin: 0 auto;
-    color: #f9fafb;
+    justify-content: center;
 
-    @media (min-width: 768px) {
-        flex-direction: row;
-        align-items: flex-start;
+    &:before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(6px);
+        z-index: 0;
     }
 `;
 
-const ProjectImage = styled.img`
+const Container = styled.div`
+    position: relative;
+    z-index: 1;
+    max-width: 1100px;
     width: 100%;
-    max-width: 450px;
+    background: rgba(17, 24, 39, 0.35);
     border-radius: 1rem;
-    object-fit: cover;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
-`;
-
-const ProjectContent = styled.div`
-    flex: 1;
+    padding: 3rem;
+    box-shadow: 0 8px 24px rgba(67, 66, 66, 0.6);
+    color: #f9fafb;
     display: flex;
     flex-direction: column;
-    gap: 1rem;
+    gap: 3rem;
 `;
 
-const Title = styled.h2`
-    font-size: 2rem;
-    font-weight: bold;
-    color: #fbbf24;
+const Header = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    text-align: center;
+
+    img {
+        width: 250px;
+        height: auto;
+    }
 `;
 
-const Subtitle = styled.h3`
-    font-size: 1.25rem;
+const Subtitle = styled.h2`
+    font-size: 1.85rem;
     font-weight: 500;
     color: #e5e7eb;
 `;
 
-const Description = styled.p`
-    font-size: 1rem;
-    line-height: 1.6;
-    color: #d1d5db;
+const Section = styled(motion.section)`
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    h3 {
+        font-size: 1.6rem;
+        font-weight: 700;
+        background: linear-gradient(180deg, #0cc4a8, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+    }
+
+    p,
+    li {
+        font-size: 1rem;
+        line-height: 1.7;
+        color: #d1d5db;
+        text-align: justify;
+    }
+
+    ul {
+        list-style: disc;
+        margin-left: 1.5rem;
+    }
+
+    img {
+        margin-top: 1rem;
+        border-radius: 0.5rem;
+        width: 100%;
+        object-fit: contain;
+    }
 `;
 
-const TechList = styled.ul`
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.75rem;
-    margin-top: 0.5rem;
+const GitHubButton = styled.a`
+    display: inline-block;
+    margin: 2rem auto 0;
+    padding: 0.75rem 2rem;
+    background: transparent;
+    color: #ffffff;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 0.75rem;
+    text-align: center;
+    border: 2px solid transparent;
+    background-image: linear-gradient(#111827, #111827),
+        linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
+    transition: all 0.3s ease;
 
-    li {
-        background: rgba(55, 65, 81, 0.8);
-        padding: 0.4rem 0.8rem;
-        border-radius: 0.5rem;
-        font-size: 0.9rem;
+    &:hover {
+        color: #111827;
+        background: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+        border-color: transparent;
     }
 `;
 
 const TrichMind: React.FC = () => {
     return (
-        <ProjectContainer
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.8 }}
-        >
-            {/* Image */}
-            <ProjectImage src={TrichMindImage} alt="TrichMind App Mockup" />
+        <ProjectSection>
+            <Container>
+                <Header>
+                    <img src={TrichMindLogo} alt="TrichMind Logo" />
+                    <Subtitle>
+                        Machine Learning-Based Prediction of Relapse Risk in Trichotillomania
+                    </Subtitle>
+                </Header>
 
-            {/* Content */}
-            <ProjectContent>
-                <Title>TrichMind</Title>
-                <Subtitle>
-                    Machine Learning-Based Prediction of Relapse Risk in Trichotillomania
-                </Subtitle>
-                <Description>
-                    TrichMind is my bachelor thesis project — a mobile and web prototype that predicts
-                    relapse risk in trichotillomania (TTM) using machine learning. The app combines
-                    user-reported emotional triggers, environments, and coping strategies to provide
-                    real-time relapse risk levels and personalized support.
-                </Description>
-                <Description>
-                    The machine learning pipeline included Logistic Regression, Random Forest,
-                    Gradient Boosting, and XGBoost, achieving up to <b>96% accuracy</b>.
-                    The app was deployed with <b>Streamlit</b>, demonstrating how predictive
-                    analytics can assist mental health management.
-                </Description>
+                {/* Abstract */}
+                <Section>
+                    <h3>Abstract</h3>
+                    <p>
+                        This thesis investigates how machine learning can predict relapse risk in individuals
+                        with trichotillomania (TTM), a body-focused repetitive behaviour (BFRB). Using
+                        user-reported data on emotions, environments, and coping strategies, the study
+                        identified stress, anxiety, and solitude as key triggers of pulling episodes.
+                        Random Forest and Logistic Regression achieved the highest predictive accuracy.
+                        A prototype app, <b>TrichMind</b>, was developed to deliver real-time risk predictions
+                        and personalized coping support to improve emotional awareness and self-management.
+                    </p>
+                </Section>
 
-                <TechList>
-                    <li>Python (scikit-learn, XGBoost)</li>
-                    <li>Pandas & NumPy</li>
-                    <li>Streamlit (Web + Mobile)</li>
-                    <li>Matplotlib & Seaborn</li>
-                    <li>Feature Engineering</li>
-                    <li>Machine Learning Models</li>
-                </TechList>
-            </ProjectContent>
-        </ProjectContainer>
+                {/* Introduction */}
+                <Section>
+                    <h3>1. Introduction</h3>
+                    <p>
+                        Trichotillomania is characterized by recurrent hair-pulling that can cause visible
+                        hair loss and emotional distress. It affects 1–2% of the population, often beginning
+                        in adolescence, yet remains under-researched. Leveraging machine learning on
+                        self-reported emotional and behavioural data presents a new opportunity for
+                        early detection and digital support. This project explores predictive modelling
+                        for relapse risk and integrates the results into an accessible self-help tool.
+                    </p>
+                </Section>
+
+                {/* Theory */}
+                <Section>
+                    <h3>2. Theory</h3>
+                    <p>
+                        The project evaluated several classical ML algorithms for multi-class classification:
+                    </p>
+                    <ul>
+                        <li><b>Logistic Regression</b> – simple baseline model, effective for small datasets.</li>
+                        <li><b>Random Forest</b> – ensemble of decision trees, robust to overfitting, high accuracy.</li>
+                        <li><b>Gradient Boosting / XGBoost</b> – sequential tree-based models, handled class imbalance well.</li>
+                    </ul>
+                    <p>
+                        Deep neural networks were not applied due to limited dataset size but are recommended for future studies.
+                    </p>
+                </Section>
+
+                {/* Method */}
+                <Section>
+                    <h3>3. Method</h3>
+                    <ul>
+                        <li><b>Data Collection:</b> Public forums, Google Trends, and an online survey (123 responses).</li>
+                        <li><b>Preprocessing:</b> Missing value imputation, encoding, scaling, 80/20 train-test split.</li>
+                        <li><b>Model Training:</b> Logistic Regression, Random Forest, Gradient Boosting, XGBoost.</li>
+                        <li><b>Evaluation:</b> Accuracy, precision, recall, F1-score, confusion matrix analysis.</li>
+                        <li><b>Deployment:</b> Best model deployed within a Streamlit-based web/mobile prototype app.</li>
+                    </ul>
+                </Section>
+
+                {/* EDA */}
+                <Section>
+                    <h3>3.1 Exploratory Data Analysis (EDA)</h3>
+                    <p>
+                        EDA was conducted to understand demographics, behavioural patterns, and feature relationships
+                        before training models. This informed both feature selection and model choice.
+                    </p>
+                    <p>
+                        <b>Demographics:</b> Most participants were young (20–30), female, and based in the USA.
+                        Many were students or unemployed, aligning with known TTM prevalence trends.
+                    </p>
+                    <img src={Demographics} alt="Survey Demographics" />
+                    <p>
+                        <b>Behavioural Features:</b> Pulling frequency was high for most respondents,
+                        while awareness during episodes was often low to moderate—suggesting many pulling
+                        behaviours occur automatically, without full conscious control.
+                    </p>
+                    <img src={BehaviourAwareness} alt="Pulling Frequency and Awareness" />
+                    <p>
+                        <b>Correlations:</b> Age and Years Since Onset showed a strong positive correlation (r ≈ 0.87),
+                        and both moderately correlated with Severity (r ≈ 0.48–0.55). Frequency and Awareness
+                        had weak correlation with Severity.
+                    </p>
+                    <img src={CorrHeatmap} alt="Feature Correlation Heatmap" />
+                    <p>
+                        <b>Insight:</b> Chronicity (longer history) appears more predictive of severity than
+                        current frequency or awareness, indicating that early intervention could prevent severity escalation.
+                    </p>
+                </Section>
+
+                {/* Results */}
+                <Section>
+                    <h3>4. Results</h3>
+                    <p>
+                        Ensemble methods performed best: Random Forest achieved the highest accuracy (96%),
+                        while Gradient Boosting and XGBoost offered better balance across classes.
+                        Logistic Regression achieved strong accuracy overall but underperformed on the
+                        medium-risk class due to imbalance.
+                    </p>
+                    <img src={BestModelReport} alt="Best Model Classification Report" />
+                    <img src={Confusion} alt="Confusion Matrix" />
+                    <p>
+                        These models were integrated into the <b>TrichMind</b> app, which provides
+                        real-time relapse risk predictions, emotional tracking, and personalized coping strategies.
+                    </p>
+                    <img src={MockUp} alt="TrichMind App Mockup" />
+                </Section>
+
+                {/* Discussion */}
+                <Section>
+                    <h3>5. Discussion</h3>
+                    <p>
+                        Findings reinforce that emotional dysregulation, stress, and solitude are primary
+                        predictors of relapse. While models reliably detect high-risk cases, addressing
+                        class imbalance will improve sensitivity to early warning signs. The integration of
+                        predictive analytics with an empathetic, user-centered interface offers promise
+                        for supporting emotional awareness and habit management.
+                    </p>
+                </Section>
+
+                {/* Conclusion */}
+                <Section>
+                    <h3>6. Conclusion</h3>
+                    <p>
+                        This study demonstrates that combining self-reported behavioural data with ML
+                        can uncover relapse patterns and support mental health self-management.
+                        The TrichMind app transforms these insights into real-time feedback, risk alerts,
+                        and coping suggestions—showcasing the potential of data-driven tools in
+                        personalized digital mental health support.
+                    </p>
+                </Section>
+
+                {/* GitHub Link */}
+                <GitHubButton
+                    href="https://github.com/girlierazon84/TrichMind"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    View on GitHub
+                </GitHubButton>
+            </Container>
+        </ProjectSection>
     );
 };
 
