@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import ProfilePic from "../assets/images/Pic02.png";
+import "../../src/index.css";
 
 // Container with background image
 const HeroSection = styled.section`
@@ -37,70 +38,70 @@ const Content = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
+    line-height: 2;
 `;
 
 const ProfileImage = styled(motion.img)`
     width: 150px;
     height: 150px;
     border-radius: 50%;
-    border: 4px solid #ffffff;
+    border: 4px solid var(--primary-color);
     object-fit: cover;
     margin-bottom: 1.5rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: 360px) {
         width: 200px;
         height: 200px;
+        margin-top: 0;
     }
 `;
 
 const NameTitle = styled(motion.h1)`
-    font-size: 2.5rem;
-    font-weight: 700;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    @media (min-width: 768px) {
-        font-size: 4rem;
-    }
+    font-size: 2rem;
+    font-weight: 800;
+    background: linear-gradient(225deg, #0cc4a8, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 `;
 
 const Subtitle = styled(motion.p)`
     margin-top: 0.75rem;
-    font-size: 1.2rem;
-    color: #e5e7eb;
-
-    @media (min-width: 768px) {
-        font-size: 1.8rem;
-    }
+    font-size: 1rem;
+    color: var(--primary-color);
 `;
 
 const Tagline = styled(motion.p)`
     margin-top: 0.5rem;
-    font-size: 1rem;
+    font-size: 0.85rem;
     font-style: italic;
-    color: #9ca3af;
+    font-weight: bold;
+    color: var(--fourthly-color);
 
     @media (min-width: 768px) {
-        font-size: 1.3rem;
+        font-size: 0.75rem;
     }
 `;
 
 const ContactButton = styled(motion.a)`
     margin-top: 1.5rem;
     padding: 0.75rem 2rem;
-    border: 1px solid white;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    font-weight: 600;
+    border: 2px solid transparent;
+    background: transparent;
+    color: var(--primary-color);
+    background-image: linear-gradient(#111827, #111827),
+        linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+    font-weight: 700;
     border-radius: 0.75rem;
     text-decoration: none;
     cursor: pointer;
+    background-origin: border-box;
+    background-clip: padding-box, border-box;
     transition: all 0.3s ease;
 
     &:hover {
-        background-color: #2563eb;
+        color: #111827;
+        background: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+        border-color: transparent;
         transform: translateY(-2px);
     }
 `;
