@@ -3,6 +3,7 @@ import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import DSBackground from "../assets/images/DS_bg.jpg";
+import "../../src/index.css";
 
 const AboutSection = styled.section`
     width: 100%;
@@ -13,7 +14,7 @@ const AboutSection = styled.section`
     background-size: cover;
     background-position: center;
     background-attachment: fixed;
-    color: #f9fafb;
+    color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -54,27 +55,28 @@ const TextContent = styled.div`
 `;
 
 const Title = styled.h2`
-    font-size: 2rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 1rem;
     text-align: center;
-    background: linear-gradient(90deg, #a78bfa, #60a5fa, #f472b6);
+    background: linear-gradient(225deg, #0cc4a8, #a78bfa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
-    @media (min-width: 768px) {
-        text-align: left;
-        font-size: 2.5rem;
+    @media (min-width: 360px) {
+        font-size: 2rem;
+        margin-top: 0;
     }
 `;
 
 const Paragraph = styled.p`
-    font-size: 1rem;
-    line-height: 1.8;
+    font-size: 1.50rem;
+    line-height: 2;
     text-align: justify;
 
-    @media (min-width: 768px) {
-        font-size: 1.125rem;
+    @media (min-width: 360px) {
+        font-size: 1rem;
+        line-height: 2;
     }
 `;
 
