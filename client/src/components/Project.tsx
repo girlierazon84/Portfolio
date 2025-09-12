@@ -51,7 +51,7 @@ const HeaderWrapper = styled.div`
 const Title = styled.h2`
     font-size: 2.5rem;
     font-weight: 800;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
+    background: linear-gradient(180deg, #0cc4a8, #a78bfa);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     text-align: center;
@@ -119,7 +119,7 @@ const ProjectCard = styled(motion.div)`
         font-size: 1.2rem;
         font-weight: 700;
         margin-bottom: 0.5rem;
-        color: #60a5fa;
+        color: var(--primary-color);
     }
 
     p {
@@ -135,7 +135,7 @@ const ProjectCard = styled(motion.div)`
         transition: color 0.3s ease;
 
         &:hover {
-            color: #f472b6;
+            color: #0cc4a8;
         }
     }
 `;
