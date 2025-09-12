@@ -7,6 +7,7 @@ import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import Pic03 from "../assets/images/Pic03.png";
+import "../../src/index.css";
 
 const ContactSection = styled.section`
     width: 100%;
@@ -61,13 +62,17 @@ const ImageWrapper = styled(motion.div)`
         animation: float 4s ease-in-out infinite;
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-12px); }
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-12px);
         }
+    }
 
-        @media (max-width: 767px) {
-            display: none;
-        }
+    @media (max-width: 768px) {
+        display: none; // ✅ Hide on mobile view
     }
 `;
 
@@ -75,41 +80,53 @@ const FormWrapper = styled(motion.div)`
     flex: 1;
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(14px);
-    padding: 2rem;
+    padding: 1.5rem;
     border-radius: 1rem;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
-    color: #fff;
+    color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 1.25rem;
     width: 100%;
+
+    @media (max-width: 768px) {
+        width: 100%;
+        height: auto; // ✅ auto-adjust height
+        padding: 1rem; // smaller padding on mobile
+    }
 
     h2 {
         font-size: 2rem;
-        font-weight: 700;
+        font-weight: 800;
         text-align: center;
-        margin-bottom: 1rem;
-        background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        margin-bottom: 0.5rem;
+        background-image: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        @media (max-width: 768px) {
+            font-size: 1.5rem;
+        }
     }
 
     form {
         display: flex;
         flex-direction: column;
-        gap: 1.25rem;
+        gap: 1rem;
+        margin: 0; // ✅ no margin
+        padding: 0; // ✅ no padding
     }
 
     input,
     textarea {
         width: 100%;
-        padding: 1rem 1.2rem;
+        padding: 0.9rem 1.1rem;
         border-radius: 0.75rem;
         border: 1px solid rgba(255, 255, 255, 0.2);
         outline: none;
         font-size: 1rem;
         background: rgba(255, 255, 255, 0.12);
-        color: #fff;
+        color: var(--primary-color);
         transition: all 0.3s ease;
 
         &::placeholder {
@@ -130,17 +147,23 @@ const FormWrapper = styled(motion.div)`
     button {
         padding: 1rem 1.5rem;
         border-radius: 0.75rem;
-        border: none;
+        border: 2px solid transparent;
         font-size: 1.05rem;
-        font-weight: 600;
+        font-weight: 700;
         cursor: pointer;
-        background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
-        color: #fff;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
+        background: transparent;
+        color: var(--primary-color);
+        background-image: linear-gradient(#111827, #111827),
+            linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+        background-origin: border-box;
+        background-clip: padding-box, border-box;
+        transition: all 0.3s ease;
 
         &:hover {
+            color: #111827;
+            background: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+            border-color: transparent;
             transform: translateY(-4px);
-            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.4);
         }
     }
 `;
