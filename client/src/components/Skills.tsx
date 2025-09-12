@@ -35,7 +35,7 @@ const Title = styled.h2`
     font-weight: 800;
     margin-bottom: 2.5rem;
     text-align: center;
-    background: linear-gradient(225deg, #0cc4a8, #a78bfa);
+    background-image: linear-gradient(270deg, #f3c408, #0cc4a8, #a78bfa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
