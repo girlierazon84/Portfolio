@@ -132,6 +132,7 @@ const ProjectCard = styled(motion.div)`
     p {
         font-size: 0.95rem;
         line-height: 1.5;
+        text-align: justify;
     }
 
     a {
