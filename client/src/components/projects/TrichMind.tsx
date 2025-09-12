@@ -12,6 +12,7 @@ import CorrHeatmap from "../../assets/images/corr_heatmap.png";
 import Confusion from "../../assets/images/confusion.png";
 import BehaviourAwareness from "../../assets/images/behaviour_freq_awareness.png";
 import MockUp from "../../assets/images/mock_up.png";
+import "../../../src/index.css";
 
 const ProjectSection = styled.section`
     width: 100%;
@@ -41,7 +42,7 @@ const Container = styled.div`
     border-radius: 1rem;
     padding: 3rem;
     box-shadow: 0 8px 24px rgba(67, 66, 66, 0.6);
-    color: #f9fafb;
+    color: var(--primary-color);
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -63,7 +64,7 @@ const Header = styled.div`
 const Subtitle = styled.h2`
     font-size: 1.85rem;
     font-weight: 500;
-    color: #e5e7eb;
+    color: var(--primary-color);
 `;
 
 const Section = styled(motion.section)`
@@ -105,7 +106,7 @@ const GitHubButton = styled.a`
     margin: 2rem auto 0;
     padding: 0.75rem 2rem;
     background: transparent;
-    color: #ffffff;
+    color: var(--primary-color);
     font-weight: 700;
     text-decoration: none;
     border-radius: 0.75rem;
@@ -121,6 +122,7 @@ const GitHubButton = styled.a`
         color: #111827;
         background: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
         border-color: transparent;
+        transform: translateY(-4px);
     }
 `;
 
