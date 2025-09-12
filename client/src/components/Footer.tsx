@@ -4,7 +4,9 @@ import styled from "styled-components";
 import EmailIcon from "@mui/icons-material/Email";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import "../../src/index.css";
 import DSBackground from "../assets/images/DS_bg.jpg"; // ✅ Import background
+import { motion } from "framer-motion";
 
 const FooterContainer = styled.footer`
     position: fixed;
@@ -12,7 +14,7 @@ const FooterContainer = styled.footer`
     left: 0;
     width: 100%;
     height: auto;
-    color: #f0f0f0;
+    color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -53,12 +55,24 @@ const FooterText = styled.div`
     }
 `;
 
+const Tagline = styled(motion.p)`
+    margin-top: 0.5rem;
+    font-size: 0.85rem;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--fourthly-color);
+
+    @media (min-width: 768px) {
+        font-size: 0.75rem;
+    }
+`;
+
 const SocialLinks = styled.div`
     display: flex;
     gap: 1.5rem;
 
     a {
-        color: #f0f0f0;
+        color: var(--primary-color);
         transition: transform 0.3s ease, color 0.3s ease;
         display: flex;
 
@@ -77,6 +91,13 @@ const Footer: React.FC = () => {
         <FooterContainer>
             <FooterText>
                 © {new Date().getFullYear()} Girlie Quindao Razon | Junior Data Scientist | ML Developer | BI Analyst | Data Analyst | Data Engineer | MERN Stack Developer
+                <Tagline
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8, delay: 1.0 }}
+                >
+                    Gather. Query. Refine.
+                </Tagline>
             </FooterText>
             <SocialLinks>
                 <a href="mailto:girlie.razon84@gmail.com" aria-label="Email">
