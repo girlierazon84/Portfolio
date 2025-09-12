@@ -2,13 +2,14 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import "../../src/index.css";
 import DSBackground from "../assets/images/DS_bg.jpg"; // ✅ Correct path
 
 const SkillsSection = styled.section`
     width: 100%;
     padding: 6rem 1.5rem;
     background: url(${DSBackground}) center/cover no-repeat;
-    color: #ffffff;
+    color: var(--primary-color);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -34,12 +35,12 @@ const Title = styled.h2`
     font-weight: 800;
     margin-bottom: 2.5rem;
     text-align: center;
-    background: linear-gradient(90deg, #60a5fa, #a78bfa, #f472b6);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    background: linear-gradient(225deg, #0cc4a8, #a78bfa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 
-    @media (min-width: 768px) {
-        font-size: 2.75rem;
+    @media (min-width: 360px) {
+        margin-top: 0;
     }
 `;
 
