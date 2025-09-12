@@ -17,7 +17,7 @@ import "../../../src/index.css";
 const ProjectSection = styled.section`
     width: 100%;
     min-height: 100vh;
-    padding: 5rem 1.5rem;
+    padding: 3rem 1.5rem;
     background: url(${DSBackground}) center/cover no-repeat;
     position: relative;
     display: flex;
@@ -27,8 +27,7 @@ const ProjectSection = styled.section`
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.7);
-        backdrop-filter: blur(6px);
+        backdrop-filter: blur(25px);
         z-index: 0;
     }
 `;
@@ -38,14 +37,18 @@ const Container = styled.div`
     z-index: 1;
     max-width: 1100px;
     width: 100%;
-    background: rgba(17, 24, 39, 0.35);
+    background: transparent;
+    box-shadow: 0 8px 24px rgba(67, 66, 66, 0.6);
     border-radius: 1rem;
     padding: 3rem;
-    box-shadow: 0 8px 24px rgba(67, 66, 66, 0.6);
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
     gap: 3rem;
+
+    @media (max-width: 768px) {
+        padding: 1.5rem;
+    }
 `;
 
 const Header = styled.div`
@@ -58,6 +61,15 @@ const Header = styled.div`
     img {
         width: 250px;
         height: auto;
+
+        @media (max-width: 768px) {
+            width: 200px;
+            height: 230px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        gap: 0;
     }
 `;
 
@@ -65,6 +77,10 @@ const Subtitle = styled.h2`
     font-size: 1.85rem;
     font-weight: 500;
     color: var(--primary-color);
+
+    @media (max-width: 768px) {
+        font-size: 1.25rem;
+    }
 `;
 
 const Section = styled(motion.section)`
@@ -75,17 +91,27 @@ const Section = styled(motion.section)`
     h3 {
         font-size: 1.6rem;
         font-weight: 700;
-        background: linear-gradient(180deg, #0cc4a8, #a78bfa);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
+        background-image: linear-gradient(225deg, #0cc4a8, #f3c408, #a78bfa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+        @media (max-width: 768px) {
+            font-size: 1.25rem;
+            font-weight: 400;
+        }
     }
 
     p,
     li {
         font-size: 1rem;
-        line-height: 1.7;
-        color: #d1d5db;
+        line-height: 2;
+        color: var(--primary-color);
         text-align: justify;
+
+        @media (max-width: 768px) {
+            font-size: 0.85rem;
+            line-height: 1.5;
+        }
     }
 
     ul {
@@ -94,10 +120,16 @@ const Section = styled(motion.section)`
     }
 
     img {
-        margin-top: 1rem;
+        margin-top: 0;
         border-radius: 0.5rem;
         width: 100%;
         object-fit: contain;
+
+        @media (max-width: 768px) {
+            height: 250px;
+            top: 0;
+            align-self: center;
+        }
     }
 `;
 
@@ -153,7 +185,7 @@ const TrichMind: React.FC = () => {
 
                 {/* Introduction */}
                 <Section>
-                    <h3>1. Introduction</h3>
+                    <h3>Introduction</h3>
                     <p>
                         Trichotillomania is characterized by recurrent hair-pulling that can cause visible
                         hair loss and emotional distress. It affects 1–2% of the population, often beginning
@@ -166,7 +198,7 @@ const TrichMind: React.FC = () => {
 
                 {/* Theory */}
                 <Section>
-                    <h3>2. Theory</h3>
+                    <h3>Theory</h3>
                     <p>
                         The project evaluated several classical ML algorithms for multi-class classification:
                     </p>
@@ -182,7 +214,7 @@ const TrichMind: React.FC = () => {
 
                 {/* Method */}
                 <Section>
-                    <h3>3. Method</h3>
+                    <h3>Method</h3>
                     <ul>
                         <li><b>Data Collection:</b> Public forums, Google Trends, and an online survey (123 responses).</li>
                         <li><b>Preprocessing:</b> Missing value imputation, encoding, scaling, 80/20 train-test split.</li>
@@ -194,7 +226,7 @@ const TrichMind: React.FC = () => {
 
                 {/* EDA */}
                 <Section>
-                    <h3>3.1 Exploratory Data Analysis (EDA)</h3>
+                    <h3>Exploratory Data Analysis (EDA)</h3>
                     <p>
                         EDA was conducted to understand demographics, behavioural patterns, and feature relationships
                         before training models. This informed both feature selection and model choice.
@@ -224,7 +256,7 @@ const TrichMind: React.FC = () => {
 
                 {/* Results */}
                 <Section>
-                    <h3>4. Results</h3>
+                    <h3>Results</h3>
                     <p>
                         Ensemble methods performed best: Random Forest achieved the highest accuracy (96%),
                         while Gradient Boosting and XGBoost offered better balance across classes.
@@ -242,7 +274,7 @@ const TrichMind: React.FC = () => {
 
                 {/* Discussion */}
                 <Section>
-                    <h3>5. Discussion</h3>
+                    <h3>Discussion</h3>
                     <p>
                         Findings reinforce that emotional dysregulation, stress, and solitude are primary
                         predictors of relapse. While models reliably detect high-risk cases, addressing
@@ -254,7 +286,7 @@ const TrichMind: React.FC = () => {
 
                 {/* Conclusion */}
                 <Section>
-                    <h3>6. Conclusion</h3>
+                    <h3>Conclusion</h3>
                     <p>
                         This study demonstrates that combining self-reported behavioural data with ML
                         can uncover relapse patterns and support mental health self-management.
