@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import styled, { keyframes } from "styled-components";
 import RoutingPath from "../routes/RoutingPath";
+import "../../src/index.css";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import PortfolioLogo from "../assets/images/portfolio_logo.png"; // ✅ Import logo
 
@@ -78,13 +79,13 @@ const DesktopMenu = styled.ul`
 `;
 
 const MenuItem = styled(Link)`
-    color: #f9fafb;
+    color: var(--primary-color, #fbbf24); // amber-400
     text-decoration: none;
     font-weight: 500;
     position: relative;
 
     &:hover {
-        color: #d1d5db;
+        color: var(--fourthly-color, #fbbf24); // amber-400
     }
 
     &:after {
@@ -125,7 +126,7 @@ const Line = styled.span<{ isOpen?: boolean; index: number }>`
     position: absolute;
     width: 1.5rem;
     height: 0.125rem;
-    background-color: #fff;
+    background-color: var(--fifthly-color, #fbbf24); // amber-400
     border-radius: 9999px;
     transition: all 0.3s ease;
 
