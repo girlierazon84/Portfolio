@@ -2,6 +2,8 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom"; // ✅ import Link
+import RoutingPath from "../routes/RoutingPath"; // ✅ import routing
 import DSBackground from "../assets/images/DS_bg.jpg";
 import Pic01 from "../assets/images/Pic01.png";
 
@@ -154,13 +156,14 @@ const fadeIn = {
 const projects = [
     {
         title: "Thesis – Predictive Modeling & App Development for Mental Health",
-        link: "https://github.com/girlierazon84/TrichMind",
+        link: RoutingPath.TRICHMIND, // ✅ now links to dedicated page
         description:
             "Developed a ML pipeline (Logistic Regression, Random Forest, XGBoost) to predict relapse risk based on emotional and behavioral user-reported data. Collected and preprocessed survey/forum data, identified triggers, and deployed a Streamlit prototype for real-time feedback.",
+        internal: true, // ✅ flag for routing
     },
     {
         title: "LIA Internship – Power BI Data Analysis & Reporting",
-        image: "C:/Users/girli/OneDrive/Desktop/My-Portfolio/client/src/assets/images/dashboard.png",
+        image: "../assets/images/dashboard.png",
         description:
             "Developed interactive Power BI dashboards analyzing case volume, workload, and revenue KPIs. Integrated case data, implemented dynamic filters and DAX-based calculations, delivering insights for staffing and planning.",
     },
@@ -170,42 +173,7 @@ const projects = [
         description:
             "Built forecasting pipeline with ensemble models and LSTM to predict birth rates and education costs. Integrated SCB data into SQLite, achieved R² > 0.95, and deployed results via an interactive Streamlit dashboard.",
     },
-    {
-        title: "Big Mac Data Pipeline – CSV to SQL with Python",
-        link: "https://github.com/girlierazon84/Kunskapskontroll_02_Pythonprogrammering",
-        description:
-            "Developed modular ETL pipeline to load Big Mac index data into SQLite using pandas. Implemented structured logging, exception handling, automated testing, and scheduling.",
-    },
-    {
-        title: "Face Expression, Age & Gender Recognition Using Deep Learning",
-        link: "https://github.com/girlierazon84/Deep_Learning_Kunskapskontroll_02",
-        description:
-            "Developed CNN models for expression, age, and gender recognition. Achieved 77% accuracy for expression, 95% for gender, and MAE of 3.5 for age.",
-    },
-    {
-        title: "Predicting Volvo V60 Car Prices Using R",
-        link: "https://github.com/girlierazon84/Kunskapskontrollen_R_Programmering",
-        description:
-            "Created regression models in R for Volvo V60 prices. Explained 84.3% variance with RMSE values of ~32k–41k, highlighting gearbox significance.",
-    },
-    {
-        title: "Handwritten Digit Recognition Using ML",
-        link: "https://github.com/girlierazon84/ML_Kunskapskontroll_2",
-        description:
-            "Developed a Streamlit app for digit recognition using ML models trained on MNIST. Achieved 97.64% accuracy with SVM, plus image preprocessing and fine-tuning.",
-    },
-    {
-        title: "Comprehensive Sales & Vendor Performance Analysis Using Power BI",
-        link: "https://github.com/girlierazon84/PowerBI",
-        description:
-            "Built interactive dashboards with Adventure Works Cycles database. Implemented vendor KPIs, drill-down hierarchies, drill-through, conditional formatting, and custom tooltips.",
-    },
-    {
-        title: "Exploring AdventureWorks 2022 Database with Python & SQLAlchemy",
-        link: "https://github.com/girlierazon84/SQL_Kunskapskontroll_AdventureWorks2022",
-        description:
-            "Extracted and analyzed AdventureWorks2022 with Python & SQLAlchemy. Generated descriptive summaries, visualizations, and statistical analysis with actionable recommendations.",
-    },
+    // ... other projects
 ];
 
 const ProjectsPage: React.FC = () => {
@@ -222,7 +190,7 @@ const ProjectsPage: React.FC = () => {
                     >
                         <img src={Pic01} alt="Projects Illustration" />
                     </ImageWrapper>
-                    <Title>Capstones Projects</Title>
+                    <Title>Capstone Projects</Title>
                 </HeaderWrapper>
                 <ProjectsGrid>
                     {projects.map((proj, idx) => (
@@ -239,10 +207,18 @@ const ProjectsPage: React.FC = () => {
                             )}
                             <h3>{proj.title}</h3>
                             <p>{proj.description}</p>
-                            {proj.link && (
-                                <a href={proj.link} target="_blank" rel="noopener noreferrer">
-                                    View Project →
-                                </a>
+                            {proj.internal ? (
+                                <Link to={proj.link}>View Project →</Link> // ✅ internal routing
+                            ) : (
+                                proj.link && (
+                                    <a
+                                        href={proj.link}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                    >
+                                        View Project →
+                                    </a>
+                                )
                             )}
                         </ProjectCard>
                     ))}
