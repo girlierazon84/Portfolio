@@ -76,7 +76,7 @@ const Paragraph = styled.p`
 
     @media (min-width: 360px) {
         font-size: 1rem;
-        line-height: 2;
+        line-height: 1.5;
     }
 `;
 
