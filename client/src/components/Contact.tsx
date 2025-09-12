@@ -56,9 +56,6 @@ const ImageWrapper = styled(motion.div)`
         width: 70%;
         max-width: 350px;
         height: auto;
-        object-fit: contain;
-        border-radius: 1rem;
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
         animation: float 4s ease-in-out infinite;
 
         @keyframes float {
@@ -81,6 +78,7 @@ const FormWrapper = styled(motion.div)`
     background: rgba(255, 255, 255, 0.08);
     backdrop-filter: blur(14px);
     padding: 1.5rem;
+    margin-left: 10rem;
     border-radius: 1rem;
     box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
     color: var(--primary-color);
@@ -93,6 +91,7 @@ const FormWrapper = styled(motion.div)`
         width: 100%;
         height: auto; // ✅ auto-adjust height
         padding: 1rem; // smaller padding on mobile
+        margin-left: 0; // ✅ No margin on mobile
     }
 
     h2 {
@@ -100,7 +99,7 @@ const FormWrapper = styled(motion.div)`
         font-weight: 800;
         text-align: center;
         margin-bottom: 0.5rem;
-        background-image: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+        background-image: linear-gradient(270deg, #f3c408, #0cc4a8, #a78bfa);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
 
@@ -199,16 +198,6 @@ const ContactPage: React.FC = () => {
     return (
         <ContactSection>
             <Container>
-                <ImageWrapper
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.8 }}
-                    variants={fadeIn}
-                >
-                    <img src={Pic03} alt="Contact Illustration" />
-                </ImageWrapper>
-
                 <FormWrapper
                     initial="hidden"
                     whileInView="visible"
@@ -244,6 +233,15 @@ const ContactPage: React.FC = () => {
                         <button type="submit">Send Message</button>
                     </form>
                 </FormWrapper>
+                <ImageWrapper
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.8 }}
+                    variants={fadeIn}
+                >
+                    <img src={Pic03} alt="Contact Illustration" />
+                </ImageWrapper>
             </Container>
             <ToastContainer position="bottom-center" autoClose={4000} hideProgressBar />
         </ContactSection>
