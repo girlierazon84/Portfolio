@@ -70,13 +70,12 @@ const Title = styled.h2`
 `;
 
 const Paragraph = styled.p`
-    font-size: 1.50rem;
+    font-size: 2rem;
     line-height: 2;
     text-align: justify;
 
     @media (min-width: 360px) {
         font-size: 1rem;
-        line-height: 1.5;
     }
 `;
 
