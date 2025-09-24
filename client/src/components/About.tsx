@@ -7,7 +7,7 @@ import "../../src/index.css";
 
 const AboutSection = styled.section`
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: relative;
     padding: 8rem 1.5rem;
     background-image: url(${DSBackground});
