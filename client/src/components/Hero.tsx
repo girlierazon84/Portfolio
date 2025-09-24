@@ -49,7 +49,7 @@ const ProfileImage = styled(motion.img)`
     object-fit: cover;
     margin-bottom: 1.5rem;
 
-    @media (min-width: 360px) {
+    @media (min-width: 768px) {
         width: 200px;
         height: 200px;
         margin-top: 0;
@@ -62,6 +62,10 @@ const NameTitle = styled(motion.h1)`
     background-image: linear-gradient(270deg, #f3c408, #0cc4a8, #a78bfa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
+
+    @media (max-width: 768px) {
+        font-size: 1.5rem;
+    }
 `;
 
 const Subtitle = styled(motion.p)`
