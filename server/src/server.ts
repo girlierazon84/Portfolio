@@ -10,7 +10,7 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// MongoDB connection
+// ✅ MongoDB connection
 mongoose
     .connect(process.env.MONGO_URI as string, {
         dbName: process.env.DB_NAME,
@@ -18,32 +18,36 @@ mongoose
     .then(() => console.log("✅ Connected to MongoDB"))
     .catch((err) => console.error("❌ MongoDB connection error:", err));
 
-// Middleware
-app.use(cors({
-    origin: [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "https://portfolio-f3so87wuc-girlies-projects.vercel.app", // ✅ your latest Vercel deployment
-        "https://portfolio-cgtmbmkqr-girlies-projects.vercel.app", // keep older deployment too (optional)
-        "https://gqr-portfolio.vercel.app" // previous version (optional)
-    ],
-    methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true
-}));
+// ✅ Updated CORS Configuration
+const allowedOrigins = [
+    "http://localhost:3000",
+    "http://127.0.0.1:3000",
+    "https://portfolio-kxgvlj7gu-girlies-projects.vercel.app", // ✅ your latest Vercel deployment
+    "https://portfolio-f3so87wuc-girlies-projects.vercel.app", // old deployment
+    "https://portfolio-cgtmbmkqr-girlies-projects.vercel.app", // old deployment
+    "https://gqr-portfolio.vercel.app", // previous version
+];
+
+app.use(
+    cors({
+        origin: allowedOrigins,
+        methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
+        allowedHeaders: ["Content-Type", "Authorization"],
+        credentials: true,
+    })
+);
 
 app.use(express.json());
 
-// Routes
+// ✅ Routes
 app.use("/api", messageRoutes);
-// ✅ Now routes are: POST /api/messages, GET /api/messages
 
-// Health check route
+// ✅ Health check route
 app.get("/", (_req, res) => {
     res.send("✅ API is running...");
 });
 
-// Start server
+// ✅ Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on port ${PORT}`);
 });
