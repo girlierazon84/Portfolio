@@ -23,8 +23,9 @@ app.use(cors({
     origin: [
         "http://localhost:3000",
         "http://127.0.0.1:3000",
-        "https://gqr-portfolio.vercel.app",
-        "https://portfolio-cgtmbmkqr-girlies-projects.vercel.app"  // ✅ Add your actual deployed Vercel URL
+        "https://portfolio-f3so87wuc-girlies-projects.vercel.app", // ✅ your latest Vercel deployment
+        "https://portfolio-cgtmbmkqr-girlies-projects.vercel.app", // keep older deployment too (optional)
+        "https://gqr-portfolio.vercel.app" // previous version (optional)
     ],
     methods: ["GET", "POST", "PUT", "DELETE", "PATCH", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
