@@ -8,4 +8,6 @@ const MessageApi = axios.create({
     },
 });
 
+console.log("✅ API Base URL:", process.env.REACT_APP_API_BASE_URL);
+
 export default MessageApi;
