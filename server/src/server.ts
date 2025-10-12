@@ -20,10 +20,8 @@ mongoose
 
 // Middleware
 app.use(cors({
-    origin: [
-        "http://localhost:3000",
-        "http://127.0.0.1:3000"
-    ],
+    origin: 'https://portfolio-2bjpo7o0y-girlies-projects.vercel.app',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true
 }));
 
@@ -40,5 +38,5 @@ app.get("/", (_req, res) => {
 
 // Start server
 app.listen(PORT, () => {
-    console.log(`🚀 Server running on http://localhost:${PORT}`);
+    console.log(`🚀 Server running on https://portfolio-2bjpo7o0y-girlies-projects.vercel.app`);
 });
