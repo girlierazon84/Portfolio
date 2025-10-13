@@ -11,7 +11,7 @@ import Demographics from "../../assets/images/demographics.png";
 import CorrHeatmap from "../../assets/images/corr_heatmap.png";
 import Confusion from "../../assets/images/confusion.png";
 import BehaviourAwareness from "../../assets/images/behaviour_freq_awareness.png";
-import MockUp from "../../assets/images/mock_up.png";
+import MockUp from "../../assets/images/TrichMind_App_Prototype.png";
 import "../../../src/index.css";
 
 const ProjectSection = styled.section`
