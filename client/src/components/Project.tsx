@@ -280,14 +280,6 @@ const ProjectsPage: React.FC = () => {
                             <p>{proj.description}</p>
                             {proj.internal ? (
                                 <Link to={proj.link}>View Project →</Link>
-                            ) : proj.externalImage ? (
-                                <a
-                                    href={proj.externalImage}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                >
-                                    View Dashboard →
-                                </a>
                             ) : (
                                 proj.link && (
                                     <a
