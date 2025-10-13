@@ -10,19 +10,41 @@ dotenv.config();
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// ✅ MongoDB connection
-mongoose
-    .connect(process.env.MONGO_URI as string, {
-        dbName: process.env.DB_NAME,
-    })
-    .then(() => console.log("✅ Connected to MongoDB Atlas successfully!"))
-    .catch((err) => console.error("❌ MongoDB connection error:", err));
+// ==========================
+// 🧩 MongoDB Connection Logic
+// ==========================
+const connectToMongoDB = async (retries = 5, delay = 5000) => {
+    while (retries) {
+        try {
+            await mongoose.connect(process.env.MONGO_URI as string, {
+            dbName: process.env.DB_NAME,
+            });
+            console.log("✅ Connected to MongoDB Atlas successfully!");
+            break;
+        } catch (err) {
+            retries -= 1;
+            console.error(
+                `❌ MongoDB connection failed. Retries left: ${retries}. Retrying in ${delay / 1000}s...`
+            );
+            console.error("Error details:", err);
+            if (!retries) {
+                console.error("💀 Could not connect to MongoDB. Exiting...");
+                process.exit(1);
+            }
+            await new Promise((res) => setTimeout(res, delay));
+        }
+    }
+};
 
-// ✅ Updated CORS Configuration
+connectToMongoDB();
+
+// ==========================
+// 🌍 CORS Configuration
+// ==========================
 const allowedOrigins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://portfolio-kxgvlj7gu-girlies-projects.vercel.app", // ✅ your current Vercel deployment
+    "https://portfolio-kxgvlj7gu-girlies-projects.vercel.app", // ✅ your latest Vercel deployment
     "https://portfolio-f3so87wuc-girlies-projects.vercel.app", // old deployment
     "https://portfolio-cgtmbmkqr-girlies-projects.vercel.app", // old deployment
     "https://gqr-portfolio.vercel.app", // previous version
@@ -37,18 +59,22 @@ app.use(
     })
 );
 
-// ✅ Middleware
+// ==========================
+// 🧱 Middleware & Routes
+// ==========================
 app.use(express.json());
-
-// ✅ Routes
 app.use("/api", messageRoutes);
 
-// ✅ Health check route
+// ==========================
+// 🩺 Health Check
+// ==========================
 app.get("/", (_req, res) => {
-    res.send("✅ API is running and connected to MongoDB Atlas");
+    res.send("✅ API is running and MongoDB Atlas connection is stable!");
 });
 
-// ✅ Start server
+// ==========================
+// 🚀 Start Server
+// ==========================
 app.listen(PORT, () => {
     console.log(`🚀 Server running on port ${PORT}`);
 });
