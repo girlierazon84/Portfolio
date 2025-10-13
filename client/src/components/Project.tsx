@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import RoutingPath from "../routes/RoutingPath";
 import "../../src/index.css";
 import DSBackground from "../assets/images/DS_bg.jpg";
-import Dashboard from "../assets/images/dashboard.png";
 import Pic01 from "../assets/images/Pic01.png";
 
 const ProjectsSection = styled.section`
@@ -157,12 +156,6 @@ const projects = [
         description:
             "Built ML pipeline (Logistic Regression, Random Forest, XGBoost) to predict relapse risk. Deployed a Streamlit app for real-time feedback.",
         internal: true,
-    },
-    {
-        title: "LIA Internship – Power BI Data Analysis & Reporting",
-        description:
-            "Developed Power BI dashboards analyzing case volume, workload, and revenue KPIs. Delivered insights via interactive filtering and DAX calculations.",
-        externalImage: Dashboard,
     },
     {
         title: "Education Cost Forecasting (Sweden, 2025–2035) - Python & ML",
