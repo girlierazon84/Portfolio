@@ -15,14 +15,14 @@ mongoose
     .connect(process.env.MONGO_URI as string, {
         dbName: process.env.DB_NAME,
     })
-    .then(() => console.log("✅ Connected to MongoDB"))
+    .then(() => console.log("✅ Connected to MongoDB Atlas successfully!"))
     .catch((err) => console.error("❌ MongoDB connection error:", err));
 
 // ✅ Updated CORS Configuration
 const allowedOrigins = [
     "http://localhost:3000",
     "http://127.0.0.1:3000",
-    "https://portfolio-kxgvlj7gu-girlies-projects.vercel.app", // ✅ your latest Vercel deployment
+    "https://portfolio-kxgvlj7gu-girlies-projects.vercel.app", // ✅ your current Vercel deployment
     "https://portfolio-f3so87wuc-girlies-projects.vercel.app", // old deployment
     "https://portfolio-cgtmbmkqr-girlies-projects.vercel.app", // old deployment
     "https://gqr-portfolio.vercel.app", // previous version
@@ -37,6 +37,7 @@ app.use(
     })
 );
 
+// ✅ Middleware
 app.use(express.json());
 
 // ✅ Routes
@@ -44,7 +45,7 @@ app.use("/api", messageRoutes);
 
 // ✅ Health check route
 app.get("/", (_req, res) => {
-    res.send("✅ API is running...");
+    res.send("✅ API is running and connected to MongoDB Atlas");
 });
 
 // ✅ Start server
