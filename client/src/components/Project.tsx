@@ -213,12 +213,6 @@ const projects = [
             "MERN social media platform with authentication, CRUD, and real-time features.",
     },
     {
-        title: "LIA Internship Project – LaCuvee",
-        link: "https://github.com/girlierazon84/LaCuvee-Projekt.git",
-        description:
-            "Wine/restaurant ordering platform. Focused on React UI/UX and backend integration in Agile workflow.",
-    },
-    {
         title: "Portfolio Website – HTML & CSS",
         link: "https://github.com/girlierazon84/Inl-mnings-Uppgift-01.git",
         description:
