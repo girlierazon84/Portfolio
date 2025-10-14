@@ -168,9 +168,8 @@ const Hero: React.FC = () => {
                     </ActionButton>
 
                     <ActionButton
-                        href={require("../assets/pdf/CV.pdf")}
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href={require("/assets/pdf/CV.pdf")}
+                        download="Girlie_Razon_CV.pdf"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.4 }}
@@ -179,7 +178,7 @@ const Hero: React.FC = () => {
                     </ActionButton>
 
                     <ActionButton
-                        href={require("../assets/pdf/Cover Letter.pdf")}
+                        href={require("/assets/pdf/Cover_Letter.pdf")}
                         download="Girlie_Razon_Cover_Letter.pdf"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
