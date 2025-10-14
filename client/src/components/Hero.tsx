@@ -168,8 +168,8 @@ const Hero: React.FC = () => {
                     </ActionButton>
 
                     <ActionButton
-                        href="/assets/pdf/CV.pdf"
-                        download="Girlie_Razon_CV.pdf"
+                        href="/assets/pdf/Resume.pdf"
+                        download="Girlie_Razon_Resume.pdf"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.4 }}
@@ -178,8 +178,8 @@ const Hero: React.FC = () => {
                     </ActionButton>
 
                     <ActionButton
-                        href="/assets/pdf/Cover_Letter.pdf"
-                        download="Girlie_Razon_Cover_Letter.pdf"
+                        href="/assets/pdf/CoverLetter.pdf"
+                        download="Girlie_Razon_CoverLetter.pdf"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 1.6 }}
