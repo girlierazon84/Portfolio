@@ -1,4 +1,5 @@
 // src/components/projects/TrichMind.tsx
+
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
@@ -8,7 +9,10 @@ import TrichMindLogo from "../../assets/images/app_logo.png";
 
 import Demographics from "../../assets/images/demographics.png";
 import BehaviourAwareness from "../../assets/images/behaviour_freq_awareness.png";
-import CorrHeatmap from "../../assets/images/corr_heatmap.png";
+
+// 🔹 Two different correlation maps
+import CorrHeatmapNumeric from "../../assets/images/corr_heatmap.png";
+import CorrHeatmapUnified from "../../assets/images/correlation_heatmap.png";
 
 import ConfusionCombined from "../../assets/images/confusion_matrix_combined.png";
 import MetricsSummary from "../../assets/images/metrics_summary.png";
@@ -18,6 +22,7 @@ import FeatureImportanceCorr from "../../assets/images/feature_importance_corr.p
 
 import MockUp from "../../assets/images/TrichMind_App_Prototype.png";
 import "../../../src/index.css";
+
 
 const ProjectSection = styled.section`
     width: 100%;
@@ -180,8 +185,25 @@ const TrichMind: React.FC = () => {
                     <p>
                         TrichMind is a research-driven project that investigates whether
                         supervised machine learning can estimate short-term relapse risk for
-                        people living with trichotillomania (hair-pulling disorder). An
-                        anonymous online survey captured demographics, pulling patterns,
+                        people living with trichotillomania (hair-pulling disorder) — an
+                        under-recognised condition with lifetime prevalence estimates of roughly
+                        0.6–2.2% of the general population{" "}
+                        <a
+                            href="https://www.msdmanuals.com/professional/psychiatric-disorders/obsessive-compulsive-and-related-disorders/trichotillomania"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            (MSD&nbsp;Manual)
+                        </a>{" "}
+                        and{" "}
+                        <a
+                            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8787581/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            Melo&nbsp;et&nbsp;al.,&nbsp;2021
+                        </a>
+                        . An anonymous online survey captured demographics, pulling patterns,
                         emotional states, environments, and coping strategies. A small but rich
                         dataset was used to train and evaluate several classifiers, including
                         Logistic Regression, Random Forest, Gradient Boosting, and an MLP
@@ -189,7 +211,7 @@ const TrichMind: React.FC = () => {
                         excellent performance and was integrated into a prototype MERN-stack
                         application with a FastAPI-based ML backend. The app provides risk
                         feedback, trend visualisation, and personalised coping suggestions to
-                        support everyday self-management. All results are interpreted cautiously,
+                        support everyday self-management, with results interpreted cautiously
                         given the limited sample size and self-report nature of the data.
                     </p>
                 </Section>
@@ -200,12 +222,30 @@ const TrichMind: React.FC = () => {
                     <p>
                         Trichotillomania is a body-focused repetitive behaviour characterised by
                         recurrent hair pulling that can lead to visible hair loss, shame, and
-                        psychological distress. Many individuals live with symptoms for years
-                        before accessing specialist care. Digital tools offer a way to capture
-                        lived experience at scale and to provide timely, stigma-sensitive
-                        support. This project explores two questions: (1) can relapse risk be
-                        approximated from self-reported behavioural and emotional patterns, and
-                        (2) how can such models be embedded in an accessible, user-friendly app?
+                        psychological distress. Epidemiological work suggests that between
+                        0.6–2.2% of people will meet diagnostic criteria at some point in their
+                        lives, with onset most commonly in late childhood or early adolescence
+                        (around ages 9–13){" "}
+                        <a
+                            href="https://www.msdmanuals.com/professional/psychiatric-disorders/obsessive-compulsive-and-related-disorders/trichotillomania"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            (MSD&nbsp;Manual)
+                        </a>{" "}
+                        <a
+                            href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8787581/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                        >
+                            (Melo&nbsp;et&nbsp;al.,&nbsp;2021)
+                        </a>
+                        . Many individuals live with symptoms for years before accessing
+                        specialist care. Digital tools offer a way to capture lived experience at
+                        scale and to provide timely, stigma-sensitive support. This project
+                        explores two questions: (1) can relapse risk be approximated from
+                        self-reported behavioural and emotional patterns, and (2) how can such
+                        models be embedded in an accessible, user-friendly app?
                     </p>
                 </Section>
 
@@ -291,7 +331,10 @@ const TrichMind: React.FC = () => {
                         that most respondents were young adults, predominantly female, and
                         primarily based in North America and Europe.
                     </p>
-                    <img src={Demographics} alt="Survey demographics and background variables" />
+                    <img
+                        src={Demographics}
+                        alt="Survey demographics and background variables"
+                    />
                     <p>
                         Behaviour-focused plots highlight that daily or near-daily pulling is
                         common, and many respondents report being only “sometimes” aware of
@@ -303,13 +346,25 @@ const TrichMind: React.FC = () => {
                         alt="Pulling frequency and awareness level distributions"
                     />
                     <p>
-                        A correlation heatmap of key numeric and engineered features shows strong
-                        links between age, years since onset, and current severity, while
-                        emotional and coping measures form their own correlated clusters.
+                        Two correlation views were created. First, a simple numeric correlation
+                        map between age, age of onset, and pulling severity shows that older
+                        participants and those with earlier onset tend to report higher current
+                        severity.
                     </p>
                     <img
-                        src={CorrHeatmap}
-                        alt="Correlation heatmap of unified TrichMind features"
+                        src={CorrHeatmapNumeric}
+                        alt="Correlation heatmap for age, age of onset, and pulling severity"
+                    />
+                    <p>
+                        Second, a unified feature correlation map includes engineered variables
+                        such as years since onset, encoded pulling frequency and awareness,
+                        aggregated emotion intensity, coping activity counts, and trigger counts.
+                        This richer view highlights clusters between chronicity, emotional
+                        intensity, and coping behaviour.
+                    </p>
+                    <img
+                        src={CorrHeatmapUnified}
+                        alt="TrichMind unified feature correlation heatmap"
                     />
                 </Section>
 
@@ -329,7 +384,7 @@ const TrichMind: React.FC = () => {
                     />
                     <img
                         src={ConfusionCombined}
-                        alt="Confusion matrices for best-performing model"
+                        alt="Confusion matrices for the best-performing model"
                     />
                     <p>
                         A comparison across candidate models showed Gradient Boosting performing
@@ -369,8 +424,8 @@ const TrichMind: React.FC = () => {
                         The modelling results are consistent with clinical descriptions of
                         trichotillomania: long-standing symptoms, emotional dysregulation, and
                         specific contexts (such as being alone or in the car) appear strongly
-                        linked to relapse risk. At the same time, the near-perfect performance of
-                        the best model likely reflects the limited size and structure of the
+                        linked to relapse risk. At the same time, the near-perfect performance
+                        of the best model likely reflects the limited size and structure of the
                         dataset. External validation on larger, more diverse samples—and
                         collaboration with clinicians—is necessary before using the model in any
                         clinical decision-making.
