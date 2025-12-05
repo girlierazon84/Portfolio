@@ -3,10 +3,10 @@
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import "../index.css";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import Pic01 from "../assets/images/Pic01.png";
-
 
 const ProjectsSection = styled.section`
     width: 100%;
@@ -73,8 +73,12 @@ const ImageWrapper = styled(motion.div)`
         animation: float 4s ease-in-out infinite;
 
         @keyframes float {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-14px); }
+            0%, 100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-14px);
+            }
         }
     }
 
@@ -129,17 +133,17 @@ const ProjectCard = styled(motion.div)`
         line-height: 1.5;
         text-align: justify;
     }
+`;
 
-    a {
-        margin-top: auto;
-        font-weight: 600;
-        text-decoration: none;
-        transition: color 0.3s ease;
-        color: #a78bfa;
+const ProjectLink = styled.a`
+    margin-top: auto;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+    color: #a78bfa;
 
-        &:hover {
-            color: #0cc4a8;
-        }
+    &:hover {
+        color: #0cc4a8;
     }
 `;
 
@@ -150,15 +154,17 @@ const fadeIn = {
 
 type Project = {
     title: string;
-    link: string;
+    link: string;      // URL or route
     description: string;
+    internal?: boolean; // true = use React Router Link
 };
 
-// ✅ Projects with shortened descriptions and proper PDF links
+// ✅ Projects with shortened descriptions and proper links
 const projects: Project[] = [
     {
         title: "Thesis – Predictive Modeling & App Development for Mental Health",
-        link: "https://github.com/girlierazon84/TrichMind",
+        link: "/projects/trichmind", // internal route to TrichMind.tsx
+        internal: true,
         description:
             "Designed and implemented a machine learning pipeline (Logistic Regression, Random Forest, Gradient Boosting, MLP) to predict relapse risk from self-collected survey data, applying normalization and rigorous validation to handle a small sample size. Developed TrichMind, a MERN-stack application with a FastAPI-based ML backend for delivering these insights to users.",
     },
@@ -278,13 +284,20 @@ const ProjectsPage: React.FC = () => {
                         >
                             <h3>{project.title}</h3>
                             <p>{project.description}</p>
-                            <a
-                                href={project.link}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                            >
-                                View project →
-                            </a>
+
+                            {project.internal ? (
+                                <ProjectLink as={Link} to={project.link}>
+                                    View project →
+                                </ProjectLink>
+                            ) : (
+                                <ProjectLink
+                                    href={project.link}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                >
+                                    View project →
+                                </ProjectLink>
+                            )}
                         </ProjectCard>
                     ))}
                 </ProjectsGrid>
