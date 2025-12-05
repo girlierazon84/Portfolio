@@ -6,11 +6,16 @@ import { motion } from "framer-motion";
 import DSBackground from "../../assets/images/DS_bg.jpg";
 import TrichMindLogo from "../../assets/images/app_logo.png";
 
-import BestModelReport from "../../assets/images/best_model_classification_report.png";
 import Demographics from "../../assets/images/demographics.png";
-import CorrHeatmap from "../../assets/images/corr_heatmap.png";
-import Confusion from "../../assets/images/confusion.png";
 import BehaviourAwareness from "../../assets/images/behaviour_freq_awareness.png";
+import CorrHeatmap from "../../assets/images/corr_heatmap.png";
+
+import ConfusionCombined from "../../assets/images/confusion_matrix_combined.png";
+import MetricsSummary from "../../assets/images/metrics_summary.png";
+import ModelAccuracyComparison from "../../assets/images/model_accuracy_comparison.png";
+import FeatureImportances from "../../assets/images/feature_importances.png";
+import FeatureImportanceCorr from "../../assets/images/feature_importance_corr.png";
+
 import MockUp from "../../assets/images/TrichMind_App_Prototype.png";
 import "../../../src/index.css";
 
@@ -92,8 +97,8 @@ const Section = styled(motion.section)`
         font-size: 1.6rem;
         font-weight: 700;
         background-image: linear-gradient(225deg, #0cc4a8, #f3c408, #a78bfa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
 
         @media (max-width: 768px) {
             font-size: 1.25rem;
@@ -169,58 +174,111 @@ const TrichMind: React.FC = () => {
                     </Subtitle>
                 </Header>
 
-                {/* Abstract */}
+                {/* ABSTRACT */}
                 <Section>
                     <h3>Abstract</h3>
                     <p>
-                        This thesis investigates how machine learning can predict relapse risk in individuals
-                        with trichotillomania (TTM), a body-focused repetitive behaviour (BFRB). Using
-                        user-reported data on emotions, environments, and coping strategies, the study
-                        identified stress, anxiety, and solitude as key triggers of pulling episodes.
-                        Random Forest and Logistic Regression achieved the highest predictive accuracy.
-                        A prototype app, <b>TrichMind</b>, was developed to deliver real-time risk predictions
-                        and personalized coping support to improve emotional awareness and self-management.
+                        TrichMind is a research-driven project that investigates whether
+                        supervised machine learning can estimate short-term relapse risk for
+                        people living with trichotillomania (hair-pulling disorder). An
+                        anonymous online survey captured demographics, pulling patterns,
+                        emotional states, environments, and coping strategies. A small but rich
+                        dataset was used to train and evaluate several classifiers, including
+                        Logistic Regression, Random Forest, Gradient Boosting, and an MLP
+                        classifier. On this dataset, a tuned Gradient Boosting model achieved
+                        excellent performance and was integrated into a prototype MERN-stack
+                        application with a FastAPI-based ML backend. The app provides risk
+                        feedback, trend visualisation, and personalised coping suggestions to
+                        support everyday self-management. All results are interpreted cautiously,
+                        given the limited sample size and self-report nature of the data.
                     </p>
                 </Section>
 
-                {/* Introduction */}
+                {/* INTRODUCTION */}
                 <Section>
                     <h3>Introduction</h3>
                     <p>
-                        Trichotillomania is characterized by recurrent hair-pulling that can cause visible
-                        hair loss and emotional distress. It affects 1–2% of the population, often beginning
-                        in adolescence, yet remains under-researched. Leveraging machine learning on
-                        self-reported emotional and behavioural data presents a new opportunity for
-                        early detection and digital support. This project explores predictive modelling
-                        for relapse risk and integrates the results into an accessible self-help tool.
+                        Trichotillomania is a body-focused repetitive behaviour characterised by
+                        recurrent hair pulling that can lead to visible hair loss, shame, and
+                        psychological distress. Many individuals live with symptoms for years
+                        before accessing specialist care. Digital tools offer a way to capture
+                        lived experience at scale and to provide timely, stigma-sensitive
+                        support. This project explores two questions: (1) can relapse risk be
+                        approximated from self-reported behavioural and emotional patterns, and
+                        (2) how can such models be embedded in an accessible, user-friendly app?
                     </p>
                 </Section>
 
-                {/* Theory */}
+                {/* MODELLING APPROACH */}
                 <Section>
-                    <h3>Theory</h3>
+                    <h3>Modelling Approach</h3>
                     <p>
-                        The project evaluated several classical ML algorithms for multi-class classification:
+                        A multi-class classification problem was formulated with three risk
+                        levels: low, medium, and high. A compact but expressive ML pipeline was
+                        implemented using:
                     </p>
                     <ul>
-                        <li><b>Logistic Regression</b> – simple baseline model, effective for small datasets.</li>
-                        <li><b>Random Forest</b> – ensemble of decision trees, robust to overfitting, high accuracy.</li>
-                        <li><b>Gradient Boosting / XGBoost</b> – sequential tree-based models, handled class imbalance well.</li>
+                        <li>
+                            <b>Logistic Regression</b> – regularised baseline model for
+                            linearly-separable structure.
+                        </li>
+                        <li>
+                            <b>Random Forest</b> – ensemble of decision trees, robust to
+                            nonlinear effects and feature interactions.
+                        </li>
+                        <li>
+                            <b>Gradient Boosting</b> – boosted trees focusing on harder
+                            examples; ultimately selected as the best-performing model.
+                        </li>
+                        <li>
+                            <b>MLP Classifier</b> – shallow neural network to test a simple
+                            non-linear alternative.
+                        </li>
                     </ul>
                     <p>
-                        Deep neural networks were not applied due to limited dataset size but are recommended for future studies.
+                        Because the dataset is relatively small, the pipeline relied on careful
+                        preprocessing, feature engineering, and validation rather than very deep
+                        or highly parameterised models.
                     </p>
                 </Section>
 
-                {/* Method */}
+                {/* METHOD */}
                 <Section>
                     <h3>Method</h3>
                     <ul>
-                        <li><b>Data Collection:</b> Public forums, Google Trends, and an online survey (123 responses).</li>
-                        <li><b>Preprocessing:</b> Missing value imputation, encoding, scaling, 80/20 train-test split.</li>
-                        <li><b>Model Training:</b> Logistic Regression, Random Forest, Gradient Boosting, XGBoost.</li>
-                        <li><b>Evaluation:</b> Accuracy, precision, recall, F1-score, confusion matrix analysis.</li>
-                        <li><b>Deployment:</b> Best model deployed within a Streamlit-based web/mobile prototype app.</li>
+                        <li>
+                            <b>Data Collection:</b> An anonymous online survey (≈120 responses)
+                            was distributed in trichotillomania communities. It captured
+                            demographic information, age of onset, pulling frequency and
+                            awareness, emotional triggers, coping strategies, environments, and
+                            current severity.
+                        </li>
+                        <li>
+                            <b>Feature Engineering:</b> Derived features included years since
+                            onset, aggregated emotion intensity scores, counts of coping
+                            activities, and trigger categories (e.g. being in the car, alone at
+                            home).
+                        </li>
+                        <li>
+                            <b>Preprocessing:</b> Cleaning, missing-value handling, encoding of
+                            categorical variables, and normalisation of numeric variables. A
+                            stratified 80/20 train–test split was used to preserve class ratios.
+                        </li>
+                        <li>
+                            <b>Model Training:</b> Models were trained with cross-validation and
+                            hyperparameter tuning. Given the small sample size, the focus was on
+                            stability and interpretability rather than maximising complexity.
+                        </li>
+                        <li>
+                            <b>Evaluation:</b> Accuracy, precision, recall, F1-score, and
+                            confusion matrices were calculated for each risk class and for the
+                            overall model.
+                        </li>
+                        <li>
+                            <b>Deployment:</b> The selected Gradient Boosting model was exported,
+                            wrapped in a FastAPI inference service, and integrated into the
+                            TrichMind MERN-stack prototype.
+                        </li>
                     </ul>
                 </Section>
 
@@ -228,71 +286,117 @@ const TrichMind: React.FC = () => {
                 <Section>
                     <h3>Exploratory Data Analysis (EDA)</h3>
                     <p>
-                        EDA was conducted to understand demographics, behavioural patterns, and feature relationships
-                        before training models. This informed both feature selection and model choice.
+                        EDA was used to understand who participated in the survey and how they
+                        experience hair pulling in daily life. The demographic overview shows
+                        that most respondents were young adults, predominantly female, and
+                        primarily based in North America and Europe.
                     </p>
+                    <img src={Demographics} alt="Survey demographics and background variables" />
                     <p>
-                        <b>Demographics:</b> Most participants were young (20–30), female, and based in the USA.
-                        Many were students or unemployed, aligning with known TTM prevalence trends.
+                        Behaviour-focused plots highlight that daily or near-daily pulling is
+                        common, and many respondents report being only “sometimes” aware of
+                        pulling while it happens. This supports the idea that a portion of the
+                        behaviour is automatic and habit-driven.
                     </p>
-                    <img src={Demographics} alt="Survey Demographics" />
+                    <img
+                        src={BehaviourAwareness}
+                        alt="Pulling frequency and awareness level distributions"
+                    />
                     <p>
-                        <b>Behavioural Features:</b> Pulling frequency was high for most respondents,
-                        while awareness during episodes was often low to moderate—suggesting many pulling
-                        behaviours occur automatically, without full conscious control.
+                        A correlation heatmap of key numeric and engineered features shows strong
+                        links between age, years since onset, and current severity, while
+                        emotional and coping measures form their own correlated clusters.
                     </p>
-                    <img src={BehaviourAwareness} alt="Pulling Frequency and Awareness" />
-                    <p>
-                        <b>Correlations:</b> Age and Years Since Onset showed a strong positive correlation (r ≈ 0.87),
-                        and both moderately correlated with Severity (r ≈ 0.48–0.55). Frequency and Awareness
-                        had weak correlation with Severity.
-                    </p>
-                    <img src={CorrHeatmap} alt="Feature Correlation Heatmap" />
-                    <p>
-                        <b>Insight:</b> Chronicity (longer history) appears more predictive of severity than
-                        current frequency or awareness, indicating that early intervention could prevent severity escalation.
-                    </p>
+                    <img
+                        src={CorrHeatmap}
+                        alt="Correlation heatmap of unified TrichMind features"
+                    />
                 </Section>
 
-                {/* Results */}
+                {/* RESULTS */}
                 <Section>
                     <h3>Results</h3>
                     <p>
-                        Ensemble methods performed best: Random Forest achieved the highest accuracy (96%),
-                        while Gradient Boosting and XGBoost offered better balance across classes.
-                        Logistic Regression achieved strong accuracy overall but underperformed on the
-                        medium-risk class due to imbalance.
+                        On the held-out test set, the tuned Gradient Boosting classifier
+                        achieved an accuracy of 1.00 with precision, recall, and F1-score of
+                        1.00 for each of the low, medium, and high risk classes. While this
+                        level of performance is very strong, it should be interpreted as
+                        optimistic due to the modest sample size.
                     </p>
-                    <img src={BestModelReport} alt="Best Model Classification Report" />
-                    <img src={Confusion} alt="Confusion Matrix" />
+                    <img
+                        src={MetricsSummary}
+                        alt="Precision, recall and F1-score per risk class"
+                    />
+                    <img
+                        src={ConfusionCombined}
+                        alt="Confusion matrices for best-performing model"
+                    />
                     <p>
-                        These models were integrated into the <b>TrichMind</b> app, which provides
-                        real-time relapse risk predictions, emotional tracking, and personalized coping strategies.
+                        A comparison across candidate models showed Gradient Boosting performing
+                        best on this dataset.
                     </p>
-                    <img src={MockUp} alt="TrichMind App Mockup" />
+                    <img
+                        src={ModelAccuracyComparison}
+                        alt="Model accuracy comparison across algorithms"
+                    />
+                    <p>
+                        Feature importance analysis indicated that chronicity and symptom
+                        intensity are among the strongest predictors. Top-ranked features
+                        include current pulling severity, years since onset, hair texture,
+                        pulling in the car, depressive symptoms, emotion intensity, trauma
+                        histories, boredom, and shame.
+                    </p>
+                    <img
+                        src={FeatureImportances}
+                        alt="Top 20 most important features for relapse risk prediction"
+                    />
+                    <img
+                        src={FeatureImportanceCorr}
+                        alt="Correlation among the top 20 important features"
+                    />
+                    <p>
+                        These insights informed the design of the TrichMind interface, which
+                        emphasises severity, chronicity, emotional state, and trigger context in
+                        the feedback it provides to users.
+                    </p>
+                    <img src={MockUp} alt="TrichMind application prototype screens" />
                 </Section>
 
-                {/* Discussion */}
+                {/* DISCUSSION */}
                 <Section>
                     <h3>Discussion</h3>
                     <p>
-                        Findings reinforce that emotional dysregulation, stress, and solitude are primary
-                        predictors of relapse. While models reliably detect high-risk cases, addressing
-                        class imbalance will improve sensitivity to early warning signs. The integration of
-                        predictive analytics with an empathetic, user-centered interface offers promise
-                        for supporting emotional awareness and habit management.
+                        The modelling results are consistent with clinical descriptions of
+                        trichotillomania: long-standing symptoms, emotional dysregulation, and
+                        specific contexts (such as being alone or in the car) appear strongly
+                        linked to relapse risk. At the same time, the near-perfect performance of
+                        the best model likely reflects the limited size and structure of the
+                        dataset. External validation on larger, more diverse samples—and
+                        collaboration with clinicians—is necessary before using the model in any
+                        clinical decision-making.
+                    </p>
+                    <p>
+                        From a product perspective, the project demonstrates how research,
+                        machine learning, and user-centred design can be combined into an
+                        empathetic digital companion rather than a diagnostic tool. The app
+                        explicitly frames outputs as supportive insights, encouraging users to
+                        reflect on patterns and experiment with coping strategies.
                     </p>
                 </Section>
 
-                {/* Conclusion */}
+                {/* CONCLUSION */}
                 <Section>
                     <h3>Conclusion</h3>
                     <p>
-                        This study demonstrates that combining self-reported behavioural data with ML
-                        can uncover relapse patterns and support mental health self-management.
-                        The TrichMind app transforms these insights into real-time feedback, risk alerts,
-                        and coping suggestions—showcasing the potential of data-driven tools in
-                        personalized digital mental health support.
+                        TrichMind shows that self-reported behavioural and emotional data can be
+                        used to model relapse patterns in trichotillomania and translate them
+                        into accessible, real-time feedback. The project combines a carefully
+                        validated machine learning pipeline with a MERN + FastAPI prototype that
+                        visualises risk, tracks progress, and surfaces coping ideas. It is
+                        designed as a complementary self-help tool and is not a replacement for
+                        professional mental health care, but it illustrates the potential of
+                        data-informed, compassionate digital support for people living with
+                        body-focused repetitive behaviours.
                     </p>
                 </Section>
 
