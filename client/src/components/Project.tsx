@@ -160,7 +160,7 @@ const projects: Project[] = [
         title: "Thesis – Predictive Modeling & App Development for Mental Health",
         link: "https://github.com/girlierazon84/TrichMind",
         description:
-            "Built ML pipeline (Logistic Regression, Random Forest Classifier, Gradient Boosting Classifier & MLP Classifier) to predict relapse risk. Deployed a Streamlit app for real-time feedback.",
+            "Designed and implemented a machine learning pipeline (Logistic Regression, Random Forest, Gradient Boosting, MLP) to predict relapse risk from self-collected survey data, applying normalization and rigorous validation to handle a small sample size. Developed TrichMind, a MERN-stack application with a FastAPI-based ML backend for delivering these insights to users.",
     },
     {
         title: "Education Cost Forecasting (Sweden, 2025–2035) - Python & ML",
