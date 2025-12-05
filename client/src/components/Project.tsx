@@ -1,12 +1,12 @@
 // src/pages/ProjectsPage.tsx
+
 import React from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
-import RoutingPath from "../routes/RoutingPath";
-import "../../src/index.css";
+import "../index.css";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import Pic01 from "../assets/images/Pic01.png";
+
 
 const ProjectsSection = styled.section`
     width: 100%;
@@ -148,14 +148,19 @@ const fadeIn = {
     visible: { opacity: 1, y: 0 },
 };
 
+type Project = {
+    title: string;
+    link: string;
+    description: string;
+};
+
 // ✅ Projects with shortened descriptions and proper PDF links
-const projects = [
+const projects: Project[] = [
     {
         title: "Thesis – Predictive Modeling & App Development for Mental Health",
-        link: RoutingPath.TRICHMIND,
+        link: "https://github.com/girlierazon84/TrichMind",
         description:
-            "Built ML pipeline (Logistic Regression, Random Forest, XGBoost) to predict relapse risk. Deployed a Streamlit app for real-time feedback.",
-        internal: true,
+            "Built ML pipeline (Logistic Regression, Random Forest Classifier, Gradient Boosting Classifier & MLP Classifier) to predict relapse risk. Deployed a Streamlit app for real-time feedback.",
     },
     {
         title: "Education Cost Forecasting (Sweden, 2025–2035) - Python & ML",
@@ -256,35 +261,30 @@ const ProjectsPage: React.FC = () => {
                         transition={{ duration: 0.8 }}
                         variants={fadeIn}
                     >
-                        <img src={Pic01} alt="Projects Illustration" />
+                        <img src={Pic01} alt="Illustration of data and web projects" />
                     </ImageWrapper>
                     <Title>Capstone Projects</Title>
                 </HeaderWrapper>
+
                 <ProjectsGrid>
-                    {projects.map((proj, idx) => (
+                    {projects.map((project, index) => (
                         <ProjectCard
-                            key={idx}
+                            key={project.title}
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true, amount: 0.2 }}
-                            transition={{ duration: 0.6, delay: idx * 0.1 }}
+                            transition={{ duration: 0.6, delay: index * 0.1 }}
                             variants={fadeIn}
                         >
-                            <h3>{proj.title}</h3>
-                            <p>{proj.description}</p>
-                            {proj.internal ? (
-                                <Link to={proj.link}>View Project →</Link>
-                            ) : (
-                                proj.link && (
-                                    <a
-                                        href={proj.link}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                    >
-                                        View Project →
-                                    </a>
-                                )
-                            )}
+                            <h3>{project.title}</h3>
+                            <p>{project.description}</p>
+                            <a
+                                href={project.link}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                            >
+                                View project →
+                            </a>
                         </ProjectCard>
                     ))}
                 </ProjectsGrid>
