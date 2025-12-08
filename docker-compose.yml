@@ -1,0 +1,44 @@
+version: "3.9"
+
+services:
+  mongo:
+    image: mongo:6
+    container_name: portfolio_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    container_name: portfolio_server
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env.docker   # non-sensitive defaults (PORT, MONGO_URI, DB_NAME)
+    environment:
+      # real secrets come from your host .env (git-ignored) or shell
+      ADMIN_USER: ${ADMIN_USER}
+      ADMIN_PASS: ${ADMIN_PASS}
+    depends_on:
+      - mongo
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+    container_name: portfolio_client
+    restart: always
+    ports:
+      - "3000:3000"            # Next.js listens on 3000 inside the container
+    env_file:
+      - ./client/.env.docker   # frontend env (no secrets)
+    depends_on:
+      - server
+
+volumes:
+  mongo-data:
