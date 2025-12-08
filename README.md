@@ -1,35 +1,143 @@
-# 🌐 Portfolio - MERN Stack
+# 🌐 Portfolio – MERN + Next.js
 
-A modern, minimalistic, and professional **portfolio website** built with the **MERN stack** (MongoDB, Express, React, Node.js + TypeScript).
+This is my personal, modern, and professional **portfolio website** built with the **MERN stack** (MongoDB, Express, React/Next.js, Node.js) using **TypeScript** and **styled-components** on the frontend.
+
+It’s where I showcase who I am, what I build, and how I work.
+
+---
+
+## ✨ What I Built
+
+I designed this portfolio as a **single cohesive experience** with:
+
+* A **sticky, glassmorphism-style navbar** that stays at the top but doesn’t cover content.
+* A **non-fixed, blurred footer** that sits naturally at the bottom of the page.
+* A full-screen **Hero** section with my profile, tagline, and CTAs.
+* Dedicated **About, Skills, Projects, and Contact** sections.
+* A detailed **project page** for my TrichMind thesis (ML + MERN).
+* A **full contact flow** backed by a MongoDB/Express API, with admin functionality.
+
+All sections reuse a blurred **data-science background image** for a consistent, minimal, and modern feel across mobile and desktop.
 
 ---
 
 ## 🚀 Features
-- ⚡ Fast & responsive frontend (React + TypeScript)
-- 📂 Showcases projects, skills, and experience
-- 📬 Contact form for visitors to send messages
-- 🔑 Admin dashboard to manage (read/update/delete) messages
-- 🛡️ Optional admin authentication for security
-- 🎨 Minimalistic design, mobile-friendly
+
+### 🖥 Frontend & Layout (Next.js + TypeScript + styled-components)
+
+* **Next.js (App Router) + TypeScript** frontend in `/client`.
+* **Sticky navbar** with a blurred DS background and:
+
+  * Desktop links to Home, About, Skills, Projects, Contact.
+  * Mobile menu with a **circular hamburger button** (icon centered in a glassy circle).
+* **Non-fixed footer**:
+
+  * Uses the same blurred DS background.
+  * Shows my name, roles, tagline, and social icons (GitHub, LinkedIn, Email).
+* **Responsive sections**:
+
+  * `Hero` – profile image, name, roles, and buttons (Get in Touch, Download CV, Download Cover Letter).
+  * `About` – who I am, what I do, and my background.
+  * `Skills` – cards with icons, progress bars, and levels (Python, ML, MERN stack, BI, etc.).
+  * `Projects` – grid of capstone projects (Python, R, Deep Learning, Streamlit, Power BI, MERN, etc.).
+  * `Contact` – a glassy contact card with form (name, email, message).
+  * `TrichMind` – in-depth project page with charts, mockups, and explanations.
+* **Framer Motion animations**:
+
+  * Smooth fade-ins and subtle transitions for sections, buttons, and icons.
+* **Glassmorphism**:
+
+  * Blurred overlays on Hero, Skills, Projects, and Contact for both aesthetics and readability.
+
+### 📬 Contact & Admin (Backend API)
+
+* **Contact form** (frontend) posts to my **Express API**.
+* Messages are stored in **MongoDB** using **Mongoose**.
+* I can secure routes with a simple **admin auth middleware** (using env credentials).
+* Admin routes allow me to:
+
+  * List messages.
+  * Mark messages as read/unread.
+  * Delete messages.
+
+### 🧱 Tech Stack
+
+**Frontend (client):**
+
+* Next.js (React) + TypeScript
+* styled-components + custom theme
+* Framer Motion
+* React Icons / MUI Icons
+* Responsive layout with modern design patterns
+
+**Backend (server):**
+
+* Node.js + Express + TypeScript
+* MongoDB + Mongoose
+* dotenv, cors, morgan
+* Simple Basic Auth for admin routes
+
+**DevOps & Deployment:**
+
+* Vercel (frontend)
+* Render (backend)
+* Docker + docker-compose for full-stack deployment on a VPS
 
 ---
 
 ## 🏗️ Project Structure
-```
-PORTFOLIO_MERN/
-│── client/ # React + TypeScript frontend
-│── server/ # Express + TypeScript backend (API + MongoDB)
+
+```bash
+PORTFOLIO/
+│── client/          # Next.js + TypeScript frontend (App Router)
+│── server/          # Express + TypeScript backend (API + MongoDB)
 │── .gitignore
 │── README.md
 │── docker-compose.yml
-|── package.json
+│── package.json
 ```
+
+### 🧭 Client (Next.js)
+
+Pages & components are structured around the sections in my portfolio:
+
+* `client/src/app/layout.tsx` – wraps the entire UI with:
+
+  * `<Navbar />` (sticky)
+  * `<main className="page-content">...</main>`
+  * `<Footer />` (non-fixed)
+* `client/src/app/page.tsx` – home page that stitches together:
+
+  * `<Hero />`
+  * `<About />`
+  * `<Skills />`
+  * `<Projects />`
+  * `<Contact />`
+* `client/src/app/about/page.tsx` – About page.
+* `client/src/app/skills/page.tsx` – Skills page.
+* `client/src/app/projects/page.tsx` – Projects page.
+* `client/src/app/projects/trichmind/page.tsx` – TrichMind project detail page.
+* `client/src/app/contact/page.tsx` – Contact page.
+* `client/src/components/*` – Navbar, Footer, Hero, About, Skills, Projects, Contact, project layouts.
+* `client/src/assets/images/*` – DS background image, profile pictures, app mockups, and charts.
+* `client/src/styles/theme.ts` + `styled.d.ts` – theme object and TS typing for styled-components.
+
+### 🧭 Server (Express API)
+
+* `server/src/config/db.ts` – MongoDB connection via Mongoose.
+* `server/src/models/messageModel.ts` – schema for contact messages.
+* `server/src/controllers/messageController.ts` – CRUD logic for messages.
+* `server/src/routes/messageRoutes.ts` – API routes for `/api/messages`.
+* `server/src/middlewares/authMiddleware.ts` – basic admin auth.
+* `server/src/App.ts` – Express app, middleware, health route, API routes, global error handler.
+* `server/src/server.ts` – server entrypoint (listens on `PORT`).
 
 ---
 
-## ⚙️ Installation & Setup (Local Development)
+## ⚙️ Local Installation & Setup
 
-### 1. Clone Repository
+### 1️⃣ Clone the Repository
+
 ```bash
 git clone https://github.com/girlierazon84/Portfolio.git
 cd Portfolio
@@ -37,7 +145,7 @@ cd Portfolio
 
 ---
 
-### 2. Install Dependencies
+### 2️⃣ Install Dependencies
 
 ```bash
 # Backend
@@ -45,115 +153,128 @@ cd server
 npm install
 
 # Frontend
-cd client
+cd ../client
 npm install
 ```
 
 ---
 
-### 3. Environment Variables
+### 3️⃣ Environment Variables
 
-Create a `.env` file in both client and server:
+I use separate `.env` files for the client and server.
 
-**server/.env**
-```
+#### `server/.env`
+
+```env
 PORT=5000
 MONGO_URI=your_mongodb_connection_string
+DB_NAME=portfolio_db
 ADMIN_USER=admin
 ADMIN_PASS=supersecret
 ```
 
-**client/.env**
+#### `client/.env.local` (Next.js)
+
+```env
+NEXT_PUBLIC_API_URL=http://localhost:5000/api
 ```
-REACT_APP_API_URL=http://localhost:5000/api
-```
+
+> I use `NEXT_PUBLIC_API_URL` so the frontend knows where to call the backend.
 
 ---
 
-### 4. Run Development Servers
+### 4️⃣ Run Development Servers
 
 ```bash
-# Backend
-cd server
+# Backend (from /server)
 npm run dev
 
-# Frontend
-cd client
-npm start
+# Frontend (from /client)
+npm run dev
 ```
 
----
-
-## 📬 Contact Form Workflow
-
-1. Visitor submits message → stored in MongoDB
-2. Admin logs in → views, updates, deletes messages
+* Frontend: [http://localhost:3000](http://localhost:3000)
+* Backend: [http://localhost:5000/api](http://localhost:5000/api)
 
 ---
 
-## 🚀 Deployment
+## 📬 Contact Form Flow (How My Messages Work)
 
-### 🔹 Deploy Backend (Server) on Render
+1. A visitor fills out the contact form (name, email, message) on the **Contact** section.
+2. The frontend calls `POST /api/messages` on my Express server.
+3. The backend validates & saves the message to MongoDB.
+4. Via admin routes, I can:
 
-1. Create an account at Render.
-2. Create a new Web Service.
-3. Connect your GitHub repo and choose the server folder.
-4. Set Build Command:
-  ```
-  npm install && npm run build
-  ```
-  and Start Command:
-  ```
-  npm run start
-  ```
+   * `GET /api/messages` – view all messages.
+   * `PATCH /api/messages/:id` – mark as read/unread.
+   * `DELETE /api/messages/:id` – remove messages.
+
+All admin routes are protected by a simple **Basic Auth** middleware using `ADMIN_USER` and `ADMIN_PASS`.
 
 ---
 
-#### 5. Add Environment Variables in Render
+## 🚢 Deployment
 
-```
-PORT=10000 (Render provides port automatically)
-MONGO_URI=your_mongodb_connection_string
-ADMIN_USER=admin
-ADMIN_PASS=supersecret
-```
+I deploy the stack in a few different ways:
 
----
+### 🔹 Backend on Render
 
-#### 6. Deploy → You’ll get a URL like:
-```
-https://portfolio-server.onrender.com
-```
+1. I create a Render account and set up a **Web Service**.
+2. I connect my GitHub repo and point it to the `server` folder.
+3. Build command:
 
----
+    ```bash
+    npm install && npm run build
+    ```
 
-### 🔹 Deploy Frontend (Client) on Vercel
+4. Start command:
 
-1. Create an account at Vercel.
-2. Import your GitHub repo and choose the client folder.
-3. Add Environment Variables in Vercel:
-  ```
-  REACT_APP_API_URL=https://portfolio-server.onrender.com/api
-  ```
+    ```bash
+    npm run start
+    ```
 
----
+5. I set environment variables in Render:
 
-#### 4. Vercel will build and deploy automatically.
+    ```env
+    PORT=10000      # Render will assign the actual port internally
+    MONGO_URI=your_mongodb_connection_string
+    DB_NAME=portfolio_db
+    ADMIN_USER=admin
+    ADMIN_PASS=supersecret
+    ```
 
----
+6. Render gives me a URL like:
 
-#### 5. You’ll get a URL like:
-```
-https://portfolio-client.vercel.app
-```
+    ```text
+    https://portfolio-server.onrender.com
+    ```
 
 ---
 
-### 🔹 Deploy Full Stack with Docker (VPS: DigitalOcean, AWS, etc.)
+### 🔹 Frontend on Vercel
+
+1. I create a Vercel account.
+2. I import my GitHub repo and select the `client` folder as the project root.
+3. I add environment variables in Vercel:
+
+    ```env
+    NEXT_PUBLIC_API_URL=https://portfolio-server.onrender.com/api
+    ```
+
+4. Vercel builds and deploys automatically.
+
+    I end up with a URL like:
+
+    ```text
+    https://portfolio-client.vercel.app
+    ```
 
 ---
 
-#### 1. Create Dockerfile for Server (`server/Dockerfile`)
+### 🔹 Full-Stack Deployment with Docker (VPS: DigitalOcean, AWS, etc.)
+
+#### 1. Server Dockerfile – `server/Dockerfile`
+
 ```dockerfile
 FROM node:18-alpine
 
@@ -170,11 +291,10 @@ EXPOSE 5000
 CMD ["npm", "run", "start"]
 ```
 
----
+#### 2. Client Dockerfile – `client/Dockerfile`
 
-#### 2. Create Dockerfile for Client (`client/Dockerfile`)
 ```dockerfile
-FROM node:18-alpine
+FROM node:18-alpine AS build
 
 WORKDIR /app
 
@@ -185,121 +305,107 @@ COPY . .
 
 RUN npm run build
 
-# Serve static files using Nginx
+# Serve static Next.js output (if using next export) or switch approach as needed
 FROM nginx:alpine
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=build /app/out /usr/share/nginx/html
 
 EXPOSE 80
 CMD ["nginx", "-g", "daemon off;"]
 ```
 
----
+> If I keep Next.js in SSR mode, I would containerise it as a Node server instead. For a purely static export, this nginx setup works.
 
-#### 3. Create `docker-compose.yml` (in project root)
+#### 3. `docker-compose.yml` (project root)
+
 ```yaml
 version: "3.9"
 services:
   server:
-   build: ./server
-   container_name: portfolio_server
-   restart: always
-   ports:
-    - "5000:5000"
-   env_file:
-    - ./server/.env
-   depends_on:
-    - mongo
+    build: ./server
+    container_name: portfolio_server
+    restart: always
+    ports:
+      - "5000:5000"
+    env_file:
+      - ./server/.env
+    depends_on:
+      - mongo
 
   client:
-   build: ./client
-   container_name: portfolio_client
-   restart: always
-   ports:
-    - "3000:80"
-   env_file:
-    - ./client/.env
-   depends_on:
-    - server
+    build: ./client
+    container_name: portfolio_client
+    restart: always
+    ports:
+      - "3000:80"
+    env_file:
+      - ./client/.env.local
+    depends_on:
+      - server
 
   mongo:
-   image: mongo:6
-   container_name: portfolio_mongo
-   restart: always
-   ports:
-    - "27017:27017"
-   volumes:
-    - mongo-data:/data/db
+    image: mongo:6
+    container_name: portfolio_mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
 
 volumes:
   mongo-data:
 ```
 
----
-
-#### 4. Build & Run with Docker
+#### 4. Build & Run
 
 ```bash
 docker-compose up --build -d
 ```
 
----
+#### 5. Access
 
-#### 5. Access Services
-
-- Frontend → http://your-vps-ip:3000
-- Backend → http://your-vps-ip:5000/api
-- MongoDB → exposed at 27017 (or connect via MongoDB Atlas)
+* Frontend → `http://your-vps-ip:3000`
+* Backend → `http://your-vps-ip:5000/api`
+* MongoDB → `your-vps-ip:27017` (or I use Atlas instead of local)
 
 ---
 
-#### 6. 📄 client/tsconfig.json
+## 🛠 Client TypeScript Config (Example)
+
+`client/tsconfig.json` example:
 
 ```json
 {
   "compilerOptions": {
-   "target": "ESNext",
-   "lib": ["DOM", "DOM.Iterable", "ESNext"],
-   "jsx": "react-jsx",
-   "module": "ESNext",
-   "moduleResolution": "Node",
-   "resolveJsonModule": true,
-   "esModuleInterop": true,
-   "allowSyntheticDefaultImports": true,
-   "isolatedModules": true,
-   "strict": true,
-   "forceConsistentCasingInFileNames": true,
-   "skipLibCheck": true,
-   "noFallthroughCasesInSwitch": true,
-   "noEmit": true
+    "target": "ESNext",
+    "lib": ["DOM", "DOM.Iterable", "ESNext"],
+    "jsx": "preserve",
+    "module": "ESNext",
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "isolatedModules": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noFallthroughCasesInSwitch": true,
+    "noEmit": true
   },
   "include": ["src"],
-  "exclude": ["node_modules", "build", "dist"]
+  "exclude": ["node_modules", ".next", "build", "dist"]
 }
 ```
 
----
+**Key points:**
 
-**Key Points:**
-
-- `"tsx": "react-tsx"` → enables React 17+ TSX Transform (no need to import React in every file).
-- `"strict": true` → ensures strong typing (good for professional projects).
-- `"noEmit": true` → since React apps use bundlers (Vite/CRA/Webpack), TypeScript shouldn’t emit .js files.
-- `"skipLibCheck": true` → speeds up build by skipping type checking of node_modules.
-- `"lib": ["DOM", "DOM.Iterable", "ESNext"]` → includes browser APIs + latest ECMAScript.
+* `"strict": true` – I keep strict typing for better reliability.
+* `"noEmit": true` – Next.js handles bundling; TypeScript just type-checks.
+* `"lib": ["DOM", "DOM.Iterable", "ESNext"]` – I rely on browser APIs + modern JS.
+* `"jsx": "preserve"` – recommended for Next.js, which handles JSX at build time.
 
 ---
 
-### 7. Comprehensive `db.ts` for your server (Node + Express + TypeScript + MongoDB with Mongoose)
-
-This file will:
-
-- Connect to MongoDB Atlas or local MongoDB.
-- Use dotenv for environment variables.
-- Include connection events for better debugging.
-- Handle graceful shutdown.
-- Export a reusable function `connectDB()`.
-
-#### 📄 server/src/config/db.ts
+## 🗄 MongoDB Connection – `server/src/config/db.ts`
 
 ```ts
 import mongoose from "mongoose";
@@ -312,67 +418,44 @@ export const connectDB = async (): Promise<void> => {
   const mongoUri = process.env.MONGO_URI as string;
 
   if (!mongoUri) {
-   console.error("❌ MONGO_URI is not defined in environment variables.");
-   process.exit(1);
+    console.error("❌ MONGO_URI is not defined in environment variables.");
+    process.exit(1);
   }
 
   try {
-   await mongoose.connect(mongoUri, {
-    dbName: process.env.DB_NAME || "portfolio_db",
-   });
+    await mongoose.connect(mongoUri, {
+      dbName: process.env.DB_NAME || "portfolio_db",
+    });
 
-   console.log("✅ MongoDB connected successfully");
+    console.log("✅ MongoDB connected successfully");
 
-   // Debug connection events
-   mongoose.connection.on("connected", () => {
-    console.log("📡 Mongoose connected to DB");
-   });
+    mongoose.connection.on("connected", () => {
+      console.log("📡 Mongoose connected to DB");
+    });
 
-   mongoose.connection.on("error", (err) => {
-    console.error("❌ Mongoose connection error:", err);
-   });
+    mongoose.connection.on("error", (err) => {
+      console.error("❌ Mongoose connection error:", err);
+    });
 
-   mongoose.connection.on("disconnected", () => {
-    console.warn("⚠️ Mongoose disconnected");
-   });
+    mongoose.connection.on("disconnected", () => {
+      console.warn("⚠️ Mongoose disconnected");
+    });
 
-   // Graceful shutdown (for Docker, VPS, etc.)
-   process.on("SIGINT", async () => {
-    await mongoose.connection.close();
-    console.log("🔌 Mongoose connection closed due to app termination");
-    process.exit(0);
-   });
+    process.on("SIGINT", async () => {
+      await mongoose.connection.close();
+      console.log("🔌 Mongoose connection closed due to app termination");
+      process.exit(0);
+    });
   } catch (error) {
-   console.error("❌ Error connecting to MongoDB:", error);
-   process.exit(1);
+    console.error("❌ Error connecting to MongoDB:", error);
+    process.exit(1);
   }
 };
 ```
 
 ---
 
-#### 📄 Example `.env` for Server
-
-```
-PORT=5000
-MONGO_URI=mongodb+srv://username:password@cluster0.mongodb.net
-DB_NAME=portfolio_db
-ADMIN_USER=admin
-ADMIN_PASS=supersecret
-```
-
----
-
-## ✅ With this setup, you now have:
-
-1. `messageModel.ts` → defines the schema
-2. `messageController.ts` → handles CRUD logic
-3. `messageRoutes.ts` → defines routes
-4. `authMiddleware.ts` → protects admin routes
-
----
-
-### 📄 server/src/models/messageModel.ts
+## 📨 Message Model – `server/src/models/messageModel.ts`
 
 ```ts
 import mongoose, { Schema, Document } from "mongoose";
@@ -394,29 +477,29 @@ export interface IMessage extends Document {
  */
 const messageSchema: Schema<IMessage> = new Schema(
   {
-   name: {
-    type: String,
-    required: [true, "Name is required"],
-    trim: true,
-    maxlength: 100,
-   },
-   email: {
-    type: String,
-    required: [true, "Email is required"],
-    trim: true,
-    lowercase: true,
-    match: [/.+\@.+\..+/, "Please enter a valid email address"],
-   },
-   message: {
-    type: String,
-    required: [true, "Message is required"],
-    trim: true,
-    maxlength: 2000,
-   },
-   isRead: {
-    type: Boolean,
-    default: false,
-   },
+    name: {
+      type: String,
+      required: [true, "Name is required"],
+      trim: true,
+      maxlength: 100,
+    },
+    email: {
+      type: String,
+      required: [true, "Email is required"],
+      trim: true,
+      lowercase: true,
+      match: [/.+\@.+\..+/, "Please enter a valid email address"],
+    },
+    message: {
+      type: String,
+      required: [true, "Message is required"],
+      trim: true,
+      maxlength: 2000,
+    },
+    isRead: {
+      type: Boolean,
+      default: false,
+    },
   },
   { timestamps: true }
 );
@@ -426,97 +509,66 @@ export const Message = mongoose.model<IMessage>("Message", messageSchema);
 
 ---
 
-### 📌 Example CRUD Operations with the Model
-
-#### `messageController.ts`
+## 🧠 Message Controller – `server/src/controllers/messageController.ts`
 
 ```ts
 import { Request, Response } from "express";
 import { Message } from "../models/messageModel";
 
-// @desc Create a new message
+// Create a new message
 export const createMessage = async (req: Request, res: Response) => {
   try {
-   const { name, email, message } = req.body;
-
-   const newMessage = await Message.create({ name, email, message });
-   res.status(201).json(newMessage);
-  } catch (error) {
-   res.status(500).json({ error: "Failed to send message" });
+    const { name, email, message } = req.body;
+    const newMessage = await Message.create({ name, email, message });
+    res.status(201).json(newMessage);
+  } catch {
+    res.status(500).json({ error: "Failed to send message" });
   }
 };
 
-// @desc Get all messages (admin only)
+// Get all messages (admin only)
 export const getMessages = async (_req: Request, res: Response) => {
   try {
-   const messages = await Message.find().sort({ createdAt: -1 });
-   res.json(messages);
-  } catch (error) {
-   res.status(500).json({ error: "Failed to fetch messages" });
+    const messages = await Message.find().sort({ createdAt: -1 });
+    res.json(messages);
+  } catch {
+    res.status(500).json({ error: "Failed to fetch messages" });
   }
 };
 
-// @desc Mark message as read/unread
+// Mark message as read/unread
 export const updateMessageStatus = async (req: Request, res: Response) => {
   try {
-   const { id } = req.params;
-   const { isRead } = req.body;
+    const { id } = req.params;
+    const { isRead } = req.body;
 
-   const updatedMessage = await Message.findByIdAndUpdate(
-    id,
-    { isRead },
-    { new: true }
-   );
+    const updatedMessage = await Message.findByIdAndUpdate(
+      id,
+      { isRead },
+      { new: true }
+    );
 
-   res.json(updatedMessage);
-  } catch (error) {
-   res.status(500).json({ error: "Failed to update message status" });
+    res.json(updatedMessage);
+  } catch {
+    res.status(500).json({ error: "Failed to update message status" });
   }
 };
 
-// @desc Delete a message
+// Delete a message
 export const deleteMessage = async (req: Request, res: Response) => {
   try {
-   const { id } = req.params;
-
-   await Message.findByIdAndDelete(id);
-   res.json({ message: "Message deleted successfully" });
-  } catch (error) {
-   res.status(500).json({ error: "Failed to delete message" });
+    const { id } = req.params;
+    await Message.findByIdAndDelete(id);
+    res.json({ message: "Message deleted successfully" });
+  } catch {
+    res.status(500).json({ error: "Failed to delete message" });
   }
 };
 ```
 
 ---
 
-### 📌 Example Routes: `messageRoutes.ts`
-
-```ts
-import express from "express";
-import {
-  createMessage,
-  getMessages,
-  updateMessageStatus,
-  deleteMessage,
-} from "../controllers/messageController";
-import { authMiddleware } from "../middlewares/authMiddleware";
-
-const router = express.Router();
-
-// Public route (any visitor can send message)
-router.post("/", createMessage);
-
-// Admin routes (protected)
-router.get("/", authMiddleware, getMessages);
-router.patch("/:id", authMiddleware, updateMessageStatus);
-router.delete("/:id", authMiddleware, deleteMessage);
-
-export default router;
-```
-
----
-
-### 📌 authMiddleware.ts
+## 🔐 Admin Auth – `server/src/middlewares/authMiddleware.ts`
 
 ```ts
 import { Request, Response, NextFunction } from "express";
@@ -533,19 +585,19 @@ export const authMiddleware = (
   const authHeader = req.headers.authorization;
 
   if (!authHeader) {
-   return res.status(401).json({ error: "Unauthorized: Missing credentials" });
+    return res.status(401).json({ error: "Unauthorized: Missing credentials" });
   }
 
   const base64Credentials = authHeader.split(" ")[1];
   const [username, password] = Buffer.from(base64Credentials, "base64")
-   .toString()
-   .split(":");
+    .toString()
+    .split(":");
 
   if (
-   username === process.env.ADMIN_USER &&
-   password === process.env.ADMIN_PASS
+    username === process.env.ADMIN_USER &&
+    password === process.env.ADMIN_PASS
   ) {
-   return next();
+    return next();
   }
 
   return res.status(403).json({ error: "Forbidden: Invalid credentials" });
@@ -554,9 +606,7 @@ export const authMiddleware = (
 
 ---
 
-### Tie Everything Together: Express App
-
-#### 📄 server/src/App.ts
+## 🌐 Express App – `server/src/App.ts`
 
 ```ts
 import express, { Application, Request, Response, NextFunction } from "express";
@@ -566,31 +616,25 @@ import morgan from "morgan";
 import { connectDB } from "./config/db";
 import messageRoutes from "./routes/messageRoutes";
 
-// Load environment variables
 dotenv.config();
 
 const app: Application = express();
 
-// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 
-// Health check route
 app.get("/", (_req: Request, res: Response) => {
   res.status(200).json({ message: "Portfolio API is running 🚀" });
 });
 
-// Routes
 app.use("/api/messages", messageRoutes);
 
-// Global error handler
 app.use((err: Error, _req: Request, res: Response, _next: NextFunction) => {
   console.error("❌ Global error:", err.message);
   res.status(500).json({ error: "Something went wrong, please try again." });
 });
 
-// Connect DB
 connectDB();
 
 export default app;
@@ -598,37 +642,34 @@ export default app;
 
 ---
 
-## ✅ Project Flow
-
-1. `Server.ts` → starts server on given port
-2. `App.ts` → sets up Express + middleware + routes + error handler
-3. `db.ts` → connects to MongoDB
-4. `messageRoutes.ts` → API endpoints for contact messages
-5. `authMiddleware.ts` → protects admin routes
-6. `messageController.ts` → business logic
-7. `messageModel.ts` → defines schema
-
----
-
 ## 🔗 Connecting Frontend & Backend
 
-In `client/.env`, ensure `REACT_APP_API_URL` points to your Render backend:
+On the frontend, my API service uses `NEXT_PUBLIC_API_URL` to send contact data:
 
+```env
+NEXT_PUBLIC_API_URL=https://portfolio-server.onrender.com/api
 ```
-REACT_APP_API_URL=https://portfolio-server.onrender.com/api
+
+Then `createMessage()` in the client calls:
+
+```ts
+POST `${process.env.NEXT_PUBLIC_API_URL}/messages`
 ```
 
 ---
 
-## 📌 Roadmap
+## 📍 Roadmap
 
-1. Add animations & transitions
-2. Dark mode toggle
-3. Blog or project CMS
-4. SEO improvements
+As I keep improving my portfolio, I plan to:
+
+1. Add **dark mode** with a toggle.
+2. Introduce a small **blog / case study** section.
+3. Add more **micro-interactions** (hover animations, subtle parallax).
+4. Improve **SEO** and structured data.
+5. Integrate basic **analytics** to understand traffic.
 
 ---
 
 ## 📜 License
 
-MIT License © 2025 Girlie Razon
+MIT License © 2025 **Girlie Quindao Razon**
