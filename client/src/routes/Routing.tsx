@@ -3,35 +3,35 @@
 
 import React from "react";
 import RoutingPath from "./RoutingPath";
-import Home from "../pages/Home";
-import About from "../pages/AboutPage";
-import Skills from "../pages/SkillsPage";
-import Projects from "../pages/ProjectsPage";
-import Contact from "../pages/ContactPage";
-import TrichMind from "../components/projects/TrichMind";
-
 
 /**------------------------------------------------------------------------
-    In Next.js, routing is handled by the `app/` or `pages/` directory,
-    so we no longer use `react-router-dom` here.
-    This file now simply exports a route config object you can
-    reference elsewhere if needed (e.g. for navigation).
----------------------------------------------------------------------------*/
-// Route configuration array
-export const routesConfig = [
-    { path: RoutingPath.HOME, label: "Home", Component: Home },
-    { path: RoutingPath.ABOUT, label: "About", Component: About },
-    { path: RoutingPath.SKILLS, label: "Skills", Component: Skills },
-    { path: RoutingPath.PROJECTS, label: "Projects", Component: Projects },
-    { path: RoutingPath.CONTACT, label: "Contact", Component: Contact },
-    { path: RoutingPath.TRICHMIND, label: "TrichMind", Component: TrichMind },
-];
+    In Next.js, routing is handled by the `app/` directory, so we do NOT
+    use react-router-dom here anymore.
 
-// Optional: a trivial component so imports like `import { Routing }` don't explode.
-// In a pure Next.js setup you normally wouldn't use this at all.
+    This file now only exports a route config you can use for things like
+    nav menus, breadcrumbs, etc. It does NOT import or render page
+    components, which avoids TypeScript/Next build errors.
+---------------------------------------------------------------------------*/
+
+// Route configuration array – paths + labels only
+export const routesConfig = [
+    { path: RoutingPath.HOME, label: "Home" },
+    { path: RoutingPath.ABOUT, label: "About" },
+    { path: RoutingPath.SKILLS, label: "Skills" },
+    { path: RoutingPath.PROJECTS, label: "Projects" },
+    { path: RoutingPath.CONTACT, label: "Contact" },
+    { path: RoutingPath.TRICHMIND, label: "TrichMind" },
+] as const;
+
+/**
+ * Optional dummy component:
+ * If somewhere you still have `import Routing from "@/routes/Routing";`
+ * this will prevent runtime errors. In a pure Next.js setup you
+ * normally wouldn't use this component at all.
+ */
 const Routing: React.FC = () => {
-  // You could render <Home /> here or nothing at all.
-    return <Home />;
+  // Nothing to render – Next.js uses app/ routes instead.
+    return null;
 };
 
 export default Routing;
