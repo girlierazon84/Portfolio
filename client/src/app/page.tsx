@@ -13,15 +13,18 @@ import Contact from "../components/Contact";
 /**----------------------
     Styled Components
 -------------------------*/
-// Main container – no extra padding for fixed nav/footer
+// Main container – prevent horizontal scroll & add breathing room
 const HomeContainer = styled.main`
   display: flex;
   flex-direction: column;
   gap: 4rem;
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  padding-block: 3rem;
 
   @media (min-width: 768px) {
     gap: 5rem;
+    padding-block: 4rem;
   }
 `;
 
@@ -48,8 +51,8 @@ const Divider = styled(motion.hr)`
   border-radius: 999px;
   background: linear-gradient(225deg, #f3c408, #0cc4a8, #a78bfa);
   box-shadow:
-    0 0 12px rgba(167, 139, 250, 0.7),
-    0 0 24px rgba(12, 196, 168, 0.5);
+    0 0 8px rgba(167, 139, 250, 0.5),
+    0 0 16px rgba(12, 196, 168, 0.35);
 
   @media (max-width: 768px) {
     height: 1.5px;
@@ -60,13 +63,13 @@ const Divider = styled(motion.hr)`
 // Fade-in for sections
 const fadeInVariants = {
   hidden: { opacity: 0, y: 40 },
-  visible: { opacity: 1, y: 0 }
+  visible: { opacity: 1, y: 0 },
 };
 
 // Divider animation
 const dividerVariants = {
   hidden: { scaleX: 0 },
-  visible: { scaleX: 1 }
+  visible: { scaleX: 1 },
 };
 
 /**----------------------------
