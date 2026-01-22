@@ -247,7 +247,7 @@ const TrichMind: React.FC = () => {
 
                 {/* OVERVIEW (kept short) */}
                 <Section>
-                    <h3>What TrichMind is</h3>
+                    <h3>What is TrichMind?</h3>
                     <p>
                         TrichMind is a research-driven ML + app prototype that estimates short-term relapse risk for trichotillomania
                         using anonymous self-report survey data. The prototype integrates a FastAPI inference backend with a Next.js
