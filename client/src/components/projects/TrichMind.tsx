@@ -1,4 +1,5 @@
 // client/src/components/projects/TrichMind.tsx
+
 "use client";
 
 import React from "react";
@@ -9,12 +10,13 @@ import Image from "next/image";
 import DSBackground from "../../assets/images/DS_bg.jpg";
 import TrichMindLogo from "../../assets/images/app_logo.png";
 
-// ✅ Keep only the most important visuals (per your note)
+// ✅ Keep only the key figures (as requested)
 import Demographics from "../../assets/images/demographics.png";
 import BehaviourAwareness from "../../assets/images/behaviour_freq_awareness.png";
 import CorrHeatmapNumeric from "../../assets/images/corr_heatmap.png";
 import CorrHeatmapUnified from "../../assets/images/correlation_heatmap.png";
 import ConfusionCombined from "../../assets/images/confusion_matrix_combined.png";
+
 
 /**----------------------
     Styled Components
@@ -49,7 +51,7 @@ const Container = styled.div`
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    gap: 2.4rem;
+    gap: 2.6rem;
 
     @media (max-width: 768px) {
         padding: 1.5rem;
@@ -61,7 +63,7 @@ const Header = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 1.2rem;
+    gap: 1rem;
     text-align: center;
 
     @media (max-width: 768px) {
@@ -122,31 +124,31 @@ const PillLink = styled.a`
 const Section = styled(motion.section)`
     display: flex;
     flex-direction: column;
-    gap: 0.9rem;
+    gap: 0.85rem;
 
     h3 {
         font-size: 1.6rem;
-        font-weight: 700;
+        font-weight: 750;
         background-image: linear-gradient(225deg, #0cc4a8, #f3c408, #a78bfa);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
 
         @media (max-width: 768px) {
             font-size: 1.25rem;
-            font-weight: 400;
+            font-weight: 500;
         }
     }
 
     p,
     li {
         font-size: 1rem;
-        line-height: 1.9;
+        line-height: 1.95;
         color: var(--primary-color);
         text-align: justify;
 
         @media (max-width: 768px) {
-            font-size: 0.88rem;
-            line-height: 1.55;
+            font-size: 0.9rem;
+            line-height: 1.6;
         }
     }
 
@@ -157,8 +159,9 @@ const Section = styled(motion.section)`
 `;
 
 const FigureBlock = styled.figure`
-    margin: 0.2rem 0 0;
-    display: grid;
+    margin: 0.25rem 0 0.75rem;
+    display: flex;
+    flex-direction: column;
     gap: 0.55rem;
 `;
 
@@ -170,17 +173,16 @@ const FigureImage = styled(Image)`
 
     @media (max-width: 768px) {
         height: 260px;
-        justify-self: center;
     }
 `;
 
-const FigureCaption = styled.figcaption`
-    font-size: 0.9rem;
-    line-height: 1.5;
-    color: rgba(255, 255, 255, 0.82);
+const Caption = styled.figcaption`
+    font-size: 0.92rem;
+    line-height: 1.55;
+    color: rgba(255, 255, 255, 0.86);
 
     @media (max-width: 768px) {
-        font-size: 0.82rem;
+        font-size: 0.84rem;
     }
 `;
 
@@ -192,7 +194,7 @@ const Callout = styled.div`
     backdrop-filter: blur(12px);
 
     p {
-        margin: 0.2rem 0;
+        margin: 0.25rem 0;
         text-align: left;
         line-height: 1.6;
     }
@@ -202,31 +204,50 @@ const Callout = styled.div`
     }
 `;
 
-const GitHubButton = styled.a`
+const PrimaryCTA = styled.a`
     display: inline-block;
-    margin: 0.7rem auto 0;
+    margin: 0.75rem auto 0;
     padding: 0.75rem 2rem;
+    background: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
+    color: #111827;
+    font-weight: 800;
+    text-decoration: none;
+    border-radius: 0.85rem;
+    text-align: center;
+    transition: transform 0.2s ease, filter 0.2s ease;
+
+    &:hover {
+        transform: translateY(-3px);
+        filter: brightness(1.02);
+    }
+`;
+
+const SecondaryCTA = styled.a`
+    display: inline-block;
+    margin: 0.35rem auto 0;
+    padding: 0.7rem 1.8rem;
     background: transparent;
     color: var(--primary-color);
-    font-weight: 700;
+    font-weight: 750;
     text-decoration: none;
-    border-radius: 0.75rem;
+    border-radius: 0.85rem;
     text-align: center;
     border: 2px solid transparent;
     background-image: linear-gradient(#111827, #111827),
         linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
     background-origin: border-box;
     background-clip: padding-box, border-box;
-    transition: all 0.3s ease;
+    transition: transform 0.2s ease, filter 0.2s ease;
 
     &:hover {
-        color: #111827;
-        background: linear-gradient(90deg, #f3c408, #0cc4a8, #a78bfa);
-        border-color: transparent;
-        transform: translateY(-4px);
+        transform: translateY(-3px);
+        filter: brightness(1.05);
     }
 `;
 
+/**----------------------
+    Component
+-------------------------*/
 const TrichMind: React.FC = () => {
     return (
         <ProjectSection>
@@ -245,108 +266,121 @@ const TrichMind: React.FC = () => {
                     </MetaLinks>
                 </Header>
 
-                {/* OVERVIEW (kept short) */}
+                {/* ABSTRACT */}
                 <Section>
-                    <h3>What is TrichMind?</h3>
+                    <h3>Abstract</h3>
                     <p>
-                        TrichMind is a research-driven ML + app prototype that estimates short-term relapse risk for trichotillomania
-                        using anonymous self-report survey data. The prototype integrates a FastAPI inference backend with a Next.js
-                        client (TypeScript + styled-components), designed as a supportive self-management tool (not a diagnostic system).
+                        TrichMind investigates whether supervised machine learning can estimate short-term relapse risk in
+                        trichotillomania using self-reported survey data. The project includes (1) a reproducible ML pipeline for
+                        training, tuning, and evaluation, and (2) a prototype application built with a MERN-style architecture:
+                        Next.js + TypeScript + styled-components on the client, and a FastAPI-based inference service for ML integration.
+                        The client is deployed on Vercel and the server is deployed on Render.
                     </p>
                 </Section>
 
-                {/* EDA (minimal visuals + clear takeaways) */}
+                {/* DATA & EDA */}
                 <Section>
-                    <h3>EDA highlights</h3>
+                    <h3>Data and Exploratory Analysis</h3>
                     <p>
-                        To keep the story clear, the page shows only five figures: demographics, behaviour patterns, two correlation views,
-                        and the confusion matrix. Together, they summarise <b>who</b> participated, <b>how</b> behaviours cluster, and <b>how well</b>{" "}
-                        the model separates risk levels.
+                        A focused EDA was used to describe the sample and verify that key behavioural signals exist in the dataset.
+                        The latest report (generated <b>2026-01-03</b>) indicates the following headline statistics:
                     </p>
 
                     <Callout>
                         <p>
-                            <b>Key findings (EDA report — 2026-01-03):</b>
+                            <b>EDA summary:</b>
                         </p>
                         <p>• Mean age: <b>32.39</b> (median: <b>31</b>)</p>
-                        <p>• Top gender: <b>Female</b></p>
-                        <p>• Top country: <b>USA</b></p>
-                        <p>• Top pulling frequency: <b>Daily</b></p>
-                        <p>• Top awareness level: <b>Sometimes</b></p>
+                        <p>• Most common gender: <b>Female</b></p>
+                        <p>• Most common country: <b>USA</b></p>
+                        <p>• Most common pulling frequency: <b>Daily</b></p>
+                        <p>• Most common awareness level: <b>Sometimes</b></p>
                         <p>• Entries with “how_long_stopped”: <b>61</b></p>
                     </Callout>
 
                     <FigureBlock>
-                        <FigureImage src={Demographics} alt="Survey demographics" />
-                        <FigureCaption>
-                            <b>Demographics:</b> who responded to the survey (age distribution + background variables).
-                        </FigureCaption>
+                        <FigureImage src={Demographics} alt="Demographics overview" />
+                        <Caption>
+                            <b>Figure 1 — Demographics.</b> A high-level overview of participant background variables. This figure provides
+                            context about who answered the survey and helps interpret how representative (or limited) the sample may be.
+                        </Caption>
                     </FigureBlock>
 
                     <FigureBlock>
-                        <FigureImage src={BehaviourAwareness} alt="Pulling frequency and awareness distributions" />
-                        <FigureCaption>
-                            <b>Behaviour patterns:</b> pulling frequency and awareness while pulling (often “sometimes”), supporting the idea
-                            that habit-driven behaviour is common.
-                        </FigureCaption>
+                        <FigureImage src={BehaviourAwareness} alt="Behaviour frequency and awareness distributions" />
+                        <Caption>
+                            <b>Figure 2 — Pulling frequency and awareness.</b> Distributions of how often participants pull and how aware they are
+                            during episodes. This matters because frequency and awareness are strong candidates for relapse-risk signals and can
+                            differentiate more automatic habit patterns from more intentional episodes.
+                        </Caption>
                     </FigureBlock>
+                </Section>
+
+                {/* FEATURE RELATIONSHIPS */}
+                <Section>
+                    <h3>Feature Relationships</h3>
+                    <p>
+                        Correlation analysis was used to sanity-check relationships between core numeric variables and a broader set of engineered features.
+                        The goal is not to claim causality, but to understand which variables tend to move together and which appear more independent.
+                    </p>
 
                     <FigureBlock>
-                        <FigureImage src={CorrHeatmapNumeric} alt="Numeric correlation heatmap (age, onset, severity)" />
-                        <FigureCaption>
-                            <b>Numeric correlations:</b> relationships among age, age of onset, and current pulling severity.
-                        </FigureCaption>
+                        <FigureImage src={CorrHeatmapNumeric} alt="Correlation heatmap (age, age of onset, pulling severity)" />
+                        <Caption>
+                            <b>Figure 3 — Numeric correlation heatmap.</b> Correlation among <i>age</i>, <i>age of onset</i>, and <i>pulling severity</i>.
+                            This provides a simple baseline view before introducing engineered features. It helps confirm whether severity is linked to
+                            basic demographics or chronicity-related variables.
+                        </Caption>
                     </FigureBlock>
 
                     <FigureBlock>
                         <FigureImage src={CorrHeatmapUnified} alt="Unified feature correlation heatmap" />
-                        <FigureCaption>
-                            <b>Unified feature correlations:</b> a broader view including engineered/encoded variables (e.g., years since onset,
-                            frequency/awareness encodings, emotion intensity sum, coping activity sum, trigger count).
-                        </FigureCaption>
+                        <Caption>
+                            <b>Figure 4 — Unified feature correlation heatmap.</b> A richer correlation view including engineered/encoded features such as
+                            <i>years since onset</i>, <i>pulling frequency</i>, <i>awareness</i>, aggregated emotion intensity, coping activity counts, and trigger counts.
+                            Clusters in this figure indicate groups of related signals (e.g., chronicity and intensity), which is useful for model interpretation and
+                            for avoiding over-counting redundant features.
+                        </Caption>
                     </FigureBlock>
                 </Section>
 
-                {/* RESULTS (single key figure) */}
+                {/* MODELLING & RESULTS */}
                 <Section>
-                    <h3>Model results (at a glance)</h3>
+                    <h3>Modelling and Evaluation</h3>
                     <p>
-                        The confusion matrix below shows how the model performs across the three classes (low/medium/high). The project has
-                        seen strong results in recent runs, but given the dataset size, the focus is on careful validation and iterative improvement.
+                        The modelling task is a three-class classification problem (<b>low</b>, <b>medium</b>, <b>high</b> risk). Multiple models were trained and tuned.
+                        In the latest logged results, a baseline Gradient Boosting model achieved <b>0.92</b> test accuracy, and a tuned Random Forest run achieved
+                        <b>1.00</b> accuracy on a smaller held-out split. Because the dataset is limited, these results are best interpreted as evidence of signal presence,
+                        not final clinical-grade performance.
                     </p>
 
                     <FigureBlock>
-                        <FigureImage src={ConfusionCombined} alt="Confusion matrices (counts and normalized)" />
-                        <FigureCaption>
-                            <b>Confusion matrix:</b> counts + normalized view of predictions by class.
-                        </FigureCaption>
+                        <FigureImage src={ConfusionCombined} alt="Confusion matrices (counts + normalized)" />
+                        <Caption>
+                            <b>Figure 5 — Confusion matrices (counts and normalized).</b> This figure shows how predictions align with true labels.
+                            The left matrix shows raw counts; the right matrix shows proportions per true class. Together, they indicate whether the model
+                            confuses adjacent classes (e.g., medium vs. high) and whether any class is systematically misclassified.
+                        </Caption>
                     </FigureBlock>
                 </Section>
 
-                {/* TECH / DEPLOYMENT */}
+                {/* SYSTEM / DEPLOYMENT */}
                 <Section>
-                    <h3>Tech & deployment</h3>
-                    <ul>
-                        <li>
-                            <b>Client:</b> Next.js, TypeScript, styled-components (deployed on Vercel)
-                        </li>
-                        <li>
-                            <b>ML inference:</b> FastAPI (designed for containerized deployment with Docker; server can be hosted separately, e.g., Render)
-                        </li>
-                        <li>
-                            <b>Goal:</b> supportive insights + trends + coping suggestions (not medical advice)
-                        </li>
-                    </ul>
+                    <h3>System and Deployment</h3>
+                    <p>
+                        TrichMind is implemented as a modern web prototype with ML integration. The client is built with <b>Next.js</b>, <b>TypeScript</b>,
+                        and <b>styled-components</b>. The ML model is served through a <b>FastAPI</b> inference API. The project is container-friendly via <b>Docker</b>
+                        and is deployed with the client on <b>Vercel</b> and server-side services on <b>Render</b>.
+                    </p>
+
+                    <PrimaryCTA href="https://trichmind.vercel.app/" target="_blank" rel="noopener noreferrer">
+                        Open the live app
+                    </PrimaryCTA>
+
+                    <SecondaryCTA href="https://github.com/girlierazon84/TrichMind" target="_blank" rel="noopener noreferrer">
+                        View on GitHub
+                    </SecondaryCTA>
                 </Section>
-
-                {/* Links */}
-                <GitHubButton href="https://trichmind.vercel.app/" target="_blank" rel="noopener noreferrer">
-                    Open the live app
-                </GitHubButton>
-
-                <GitHubButton href="https://github.com/girlierazon84/TrichMind" target="_blank" rel="noopener noreferrer">
-                    View on GitHub
-                </GitHubButton>
             </Container>
         </ProjectSection>
     );
