@@ -283,10 +283,7 @@ const TrichMind: React.FC = () => {
                 <Section>
                     <h3>Abstract</h3>
                     <p>
-                        TrichMind is my thesis-style project exploring whether supervised machine learning can estimate short-term
-                        relapse risk in trichotillomania (hair-pulling disorder). The work starts with an anonymous survey dataset
-                        and turns it into a practical prototype: a web app that returns a risk level (low / medium / high),
-                        shows the user what may be driving risk, and encourages gentle, non-judgmental coping reflection.
+                        TrichMind is my thesis-based personal project investigating whether supervised machine learning can estimate short-term relapse risk in trichotillomania (hair-pulling disorder). Using an anonymous survey dataset, I built a practical prototype: a mobile / web app that outputs a risk level (low / medium / high), surfaces patterns that may be contributing to risk, and encourages calm, compassionate coping reflection.
                     </p>
                     <p>
                         The system is split into two parts: an ML inference service built with <b>FastAPI</b>, and an application layer built
@@ -301,7 +298,7 @@ const TrichMind: React.FC = () => {
                     <h3>Data and EDA summary</h3>
                     <p>
                         Before modeling, I ran an exploratory analysis to understand who answered the survey and how pulling is described in
-                        day-to-day life. The latest EDA report was generated on <b>2026-01-03</b>.
+                        day-to-day life.
                     </p>
 
                     <Callout>
@@ -337,7 +334,7 @@ const TrichMind: React.FC = () => {
                 <Section>
                     <h3>Feature relationships</h3>
                     <p>
-                        To avoid drowning the reader in plots, I kept two correlation views that answer different questions. The first is a simple,
+                        There are two correlation views that answer different questions. The first is a simple,
                         numeric-only correlation among core variables. The second includes engineered/encoded features that the model actually uses.
                     </p>
 
@@ -345,7 +342,7 @@ const TrichMind: React.FC = () => {
                         <FigureImage src={CorrHeatmapNumeric} alt="Numeric correlation heatmap (age, age of onset, pulling severity)" />
                         <FigCaption>
                             <b>Figure 3.</b> Numeric correlation (age, age of onset, pulling severity). This is a quick “sanity check” view: it shows how
-                            basic demographic timing relates to severity. It’s intentionally simple and easy to read.
+                            basic demographic timing relates to severity.
                         </FigCaption>
                     </FigureBlock>
 
