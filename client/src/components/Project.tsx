@@ -6,10 +6,8 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { motion } from "framer-motion";
 import Link from "next/link";
-import Image from "next/image";
 
 import DSBackground from "../assets/images/DS_bg.jpg";
-import Pic01 from "../assets/images/Pic01.png";
 
 
 // =======================
@@ -44,69 +42,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: column;
     gap: 3rem;
-`;
-
-// Header wrapper for title and image
-const HeaderWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 2rem;
-
-    @media (max-width: 768px) {
-        flex-direction: column;
-        gap: 1.5rem;
-    }
-`;
-
-// Title styling
-const Title = styled.h2`
-    font-size: 2.5rem;
-    font-weight: 800;
-    margin-right: 9rem;
-    background-image: linear-gradient(270deg, #f3c408, #0cc4a8, #a78bfa);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-
-    @media (max-width: 820px) {
-        font-size: 2.1rem;
-    }
-
-    @media (max-width: 768px) {
-        font-size: 2rem;
-        margin-right: 0;
-    }
-
-    @media (max-width: 376px) {
-        font-size: 1.7rem;
-    }
-`;
-
-// Image wrapper with animation
-const ImageWrapper = styled(motion.div)`
-    flex-shrink: 0;
-
-    @media (max-width: 768px) {
-        display: none;
-    }
-`;
-
-// Floating animation for the image
-const HeroImage = styled(Image)`
-    max-width: 250px;
-    height: auto;
-    animation: float 4s ease-in-out infinite;
-
-    @keyframes float {
-        0%,
-        100% {
-            transform: translateY(0);
-        }
-        50% {
-            transform: translateY(-14px);
-        }
-    }
 `;
 
 // Grid layout for projects
@@ -326,25 +261,6 @@ const Projects: React.FC = () => {
     return (
         <ProjectsSection id="projects">
             <Container>
-                <HeaderWrapper>
-                    <ImageWrapper
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.2 }}
-                        transition={{ duration: 0.8 }}
-                        variants={fadeIn}
-                    >
-                        <HeroImage
-                            src={Pic01}
-                            alt="Illustration of data and web projects"
-                            width={250}
-                            height={250}
-                            priority={false}
-                        />
-                    </ImageWrapper>
-                    <Title>Capstone Projects</Title>
-                </HeaderWrapper>
-
                 <ProjectsGrid>
                     {projects.map((project, index) => (
                         <ProjectCard
