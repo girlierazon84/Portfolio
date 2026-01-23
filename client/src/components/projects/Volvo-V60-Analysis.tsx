@@ -12,7 +12,6 @@ import DSBackground from "../../assets/images/DS_bg.jpg";
 // EDA & modelling figures
 import DistPriceAll from "../../assets/images/Rplot-Distribution-Price-Volvo-V60-Car.png";
 import DistPriceSplits from "../../assets/images/Distribution-Target-Variable-Train-Validation-Test-Dataset.png";
-import DistPriceTrain from "../../assets/images/Rplot-Distribution-Target-Variable-Train-Dataset.png";
 import PairsPlot from "../../assets/images/Rplot-Pairs-Target-Feature-Variables.png";
 import CorrHeatmap from "../../assets/images/Corr-Heatmap-Numeric-Data.png";
 
@@ -23,7 +22,6 @@ import ScatterMileageGearbox from "../../assets/images/Scatter-Plot-Car-Price-VS
 
 import AddedVariablePlots from "../../assets/images/Added-Variable-Plots.png";
 import MultiCollinearityAll from "../../assets/images/Check-All-Models-MultiCollinearity-Plots.png";
-import MultiCollinearityAll02 from "../../assets/images/Check-All-Models-MultiCollinearity-Plots01.png";
 
 
 /**----------------------
@@ -60,7 +58,7 @@ const Container = styled.div`
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    gap: 2.25rem;
+    gap: 1.75rem; /* tightened to reduce large vertical gaps */
 
     @media (max-width: 768px) {
         padding: 1.5rem;
@@ -133,7 +131,7 @@ const PillLink = styled.a`
 const Section = styled(motion.section)`
     display: flex;
     flex-direction: column;
-    gap: 0.95rem;
+    gap: 0.85rem; /* slightly tighter section internal spacing */
 
     h3 {
         font-size: 1.55rem;
@@ -366,7 +364,7 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Scatterplot matrix of price vs key features"
                         />
                         <FigCaption>
-                            <b>Figure 4.</b> Scatterplot pairs of <i>Price</i> against{" "}
+                            <b>Figure 3.</b> Scatterplot pairs of <i>Price</i> against{" "}
                             <i>Model_Year</i>, <i>Mileage</i>, <i>Horsepower</i>,{" "}
                             <i>Fuel</i>, and <i>Gearbox</i>. Newer cars and more powerful cars
                             clearly sell for more, while higher mileage pulls prices down.
@@ -379,7 +377,7 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Correlation heatmap of numeric and dummy-encoded features"
                         />
                         <FigCaption>
-                            <b>Figure 5.</b> Correlation heatmap for numeric and dummy-encoded
+                            <b>Figure 4.</b> Correlation heatmap for numeric and dummy-encoded
                             features. Price is strongly positively correlated with{" "}
                             <i>Model_Year</i> (≈0.72) and <i>Horsepower</i> (≈0.64), and
                             strongly negatively correlated with <i>Mileage</i> (≈-0.64).
@@ -410,7 +408,7 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Scatter plot: price vs horsepower by fuel type"
                         />
                         <FigCaption>
-                            <b>Figure 6.</b> Price vs. horsepower by fuel type. Hybrids cluster at
+                            <b>Figure 5.</b> Price vs. horsepower by fuel type. Hybrids cluster at
                             higher horsepower and higher prices, while diesel cars are more often
                             mid-power, mid-price. This pattern supports positive horsepower and
                             fuel-type effects in the regression.
@@ -423,7 +421,7 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Scatter plot: price vs horsepower by gearbox type"
                         />
                         <FigCaption>
-                            <b>Figure 7.</b> Price vs. horsepower by gearbox. Automatics dominate
+                            <b>Figure 6.</b> Price vs. horsepower by gearbox. Automatics dominate
                             the higher price and horsepower range, whereas manuals tend to be
                             slightly cheaper and less powerful.
                         </FigCaption>
@@ -435,7 +433,7 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Scatter plot: price vs mileage by fuel type"
                         />
                         <FigCaption>
-                            <b>Figure 8.</b> Price vs. mileage by fuel type. Across all fuels,
+                            <b>Figure 7.</b> Price vs. mileage by fuel type. Across all fuels,
                             higher mileage lowers price, but the slope is steepest among hybrids,
                             reflecting how buyers penalise wear more strongly on premium
                             powertrains.
@@ -448,7 +446,7 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Scatter plot: price vs mileage by gearbox type"
                         />
                         <FigCaption>
-                            <b>Figure 9.</b> Price vs. mileage by gearbox. Both automatics and
+                            <b>Figure 8.</b> Price vs. mileage by gearbox. Both automatics and
                             manuals lose value as mileage increases, with automatics starting from
                             a higher base level.
                         </FigCaption>
@@ -528,8 +526,11 @@ const VolvoV60Analysis: React.FC = () => {
                     <h3>Multicollinearity checks and partial relationships</h3>
                     <p>
                         Because some predictors are correlated (for example, hybrids tend to be
-                        newer and more powerful), I checked multicollinearity diagnostics and
-                        visualised partial relationships using added-variable plots.
+                        newer and more powerful), I checked multicollinearity diagnostics (e.g.
+                        VIF) and visualised partial relationships using added-variable plots.
+                        Competing candidate models showed very similar information criteria
+                        (AIC, BIC) and R², so the chosen specification balances performance and
+                        interpretability.
                     </p>
 
                     <FigureBlock>
@@ -538,24 +539,11 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Multi-collinearity diagnostics for the linear models"
                         />
                         <FigCaption>
-                            <b>Figure 10.</b> First set of multi-collinearity checks (e.g. VIF and
-                            correlation diagnostics). The main takeaway is that although{" "}
-                            <i>Horsepower</i> and <i>FuelHybrid</i> are strongly related, VIF
-                            values stay within an acceptable range, so the model remains numerically
-                            stable.
-                        </FigCaption>
-                    </FigureBlock>
-
-                    <FigureBlock>
-                        <FigureImage
-                            src={MultiCollinearityAll02}
-                            alt="Additional multi-collinearity and diagnostic plots"
-                        />
-                        <FigCaption>
-                            <b>Figure 11.</b> Additional multi-collinearity / diagnostic plots
-                            across candidate models. Competing regressions show very similar
-                            information criteria (AIC, BIC) and R², confirming that no alternative
-                            subset yields clearly superior performance.
+                            <b>Figure 9.</b> Multi-collinearity and model diagnostic plots across
+                            candidate regressions. Despite some correlation between{" "}
+                            <i>Horsepower</i> and <i>FuelHybrid</i>, VIF values remain in an
+                            acceptable range and information criteria are nearly identical across
+                            subset models, supporting the chosen specification.
                         </FigCaption>
                     </FigureBlock>
 
@@ -565,10 +553,10 @@ const VolvoV60Analysis: React.FC = () => {
                             alt="Added-variable plots for each predictor in the chosen model"
                         />
                         <FigCaption>
-                            <b>Figure 12.</b> Added-variable plots (partial regression plots) for
-                            the final model. Each panel shows the unique contribution of a
-                            predictor after controlling for the others. The strong positive slopes
-                            for <i>Model_Year</i> and <i>Horsepower</i>, and the negative slope
+                            <b>Figure 10.</b> Added-variable (partial regression) plots for the
+                            final model. Each panel shows the unique contribution of a predictor
+                            after controlling for the others. The strong positive slopes for{" "}
+                            <i>Model_Year</i> and <i>Horsepower</i>, and the negative slope
                             for <i>Mileage</i>, visually reinforce the coefficient estimates.
                         </FigCaption>
                     </FigureBlock>
