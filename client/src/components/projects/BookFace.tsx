@@ -1,7 +1,5 @@
 // client/src/components/projects/BookFace.tsx
 
-// client/src/components/projects/BookFace.tsx
-
 "use client";
 
 import React from "react";
@@ -11,6 +9,7 @@ import Image from "next/image";
 
 import DSBackground from "../../assets/images/DS_bg.jpg";
 import BookFaceLogo from "../../assets/images/BookFace-logo.png";
+
 
 /**----------------------
     Styled Components
@@ -236,9 +235,9 @@ const CTAStack = styled.div`
     align-items: center;
 `;
 
-// Static wordmark image (from original CRA app)
+// Static wordmark image (now blue foreground)
 const BOOKFACE_WORDMARK =
-    "https://see.fontimg.com/api/rf5/K74zp/ZjA0ZDIwYjE0YzZmNDIzYjkzNzA1ZTg1OTgwZGM3MTQudHRm/Qm9va0ZhY2U/motterdam.png?r=fs&h=98&w=1500&fg=000000&bg=FFFFFF&tb=1&s=65";
+    "https://see.fontimg.com/api/rf5/K74zp/ZjA0ZDIwYjE0YzZmNDIzYjkzNzA1ZTg1OTgwZGM3MTQudHRm/Qm9va0ZhY2U/motterdam.png?r=fs&h=98&w=1500&fg=0000FF&bg=FFFFFF&tb=1&s=65";
 
 /**----------------------
     Component
@@ -261,7 +260,7 @@ const BookFace: React.FC = () => {
 
                     <Subtitle>
                         Fullstack MERN social app with JWT auth, media uploads, and cloud
-                        deployment on Render + Vercel.
+                        deployment.
                     </Subtitle>
 
                     <MetaLinks>
@@ -271,13 +270,6 @@ const BookFace: React.FC = () => {
                             rel="noopener noreferrer"
                         >
                             Live app (Vercel)
-                        </PillLink>
-                        <PillLink
-                            href="https://bookface-nwjl.onrender.com"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        >
-                            Backend API (Render)
                         </PillLink>
                         <PillLink
                             href="https://github.com/girlierazon84/Bookface_Fullstack_MERN"
@@ -309,7 +301,7 @@ const BookFace: React.FC = () => {
                         styled-components and powered by Axios for API calls. The backend
                         is a Node.js + Express + TypeScript API, using MongoDB Atlas for
                         persistence and Cloudinary for media hosting. The system is
-                        deployed with the backend on Render and the frontend on Vercel.
+                        deployed with a dedicated frontend on Vercel.
                     </p>
                 </Section>
 
@@ -377,8 +369,8 @@ const BookFace: React.FC = () => {
                             post media.
                         </li>
                         <li>
-                            <b>Deployment:</b> Backend on Render, frontend on Vercel with
-                            environment-specific API base URLs.
+                            <b>Deployment:</b> Frontend on Vercel with environment-specific
+                            API base URLs.
                         </li>
                     </ul>
                 </Section>
@@ -400,20 +392,14 @@ const BookFace: React.FC = () => {
                     <ul>
                         <li>
                             <b>Backend local env:</b>{" "}
-                            <code>backend/.env (SERVER_PORT, MONGO_URI, DB_NAME, CLOUDINARY_*, JWT_SECRET)</code>
+                            <code>
+                                backend/.env (SERVER_PORT, MONGO_URI, DB_NAME, CLOUDINARY_*,
+                                JWT_SECRET)
+                            </code>
                         </li>
                         <li>
                             <b>Frontend local env:</b>{" "}
                             <code>frontend/.env (REACT_APP_API_BASE_URL)</code>
-                        </li>
-                        <li>
-                            <b>Render:</b> builds the backend from <code>backend/</code>{" "}
-                            with <code>npm ci && npm run build</code>, then{" "}
-                            <code>npm start</code>.
-                        </li>
-                        <li>
-                            <b>Vercel:</b> builds the frontend from <code>frontend/</code>{" "}
-                            using <code>npm run build</code> (CRA preset).
                         </li>
                     </ul>
                 </Section>
@@ -432,23 +418,16 @@ const BookFace: React.FC = () => {
                         </p>
                         <p>
                             CORS is configured with a <code>CORS_ORIGINS</code> environment
-                            variable. In production it includes the Vercel frontend URL:
-                        </p>
-                        <p>
-                            <code>
-                                CORS_ORIGINS=https://bookface-fullstack-mern.vercel.app
-                            </code>
-                        </p>
-                        <p>
-                            For local development, localhost is added as well.
+                            variable so that only the approved frontend origin(s) can call
+                            the API. In production it includes the Vercel frontend URL.
                         </p>
 
                         <p>
                             <b>MongoDB Atlas connectivity</b>
                         </p>
                         <p>
-                            When deploying to Render, MongoDB Atlas needs Render&apos;s IP
-                            range whitelisted under <i>Network Access</i>. During
+                            When deploying, MongoDB Atlas needs your hosting provider&apos;s
+                            IP range whitelisted under <i>Network Access</i>. During
                             development, <code>0.0.0.0/0</code> is a quick but less strict
                             option.
                         </p>
@@ -458,7 +437,7 @@ const BookFace: React.FC = () => {
                         </p>
                         <p>
                             Validation errors such as “Media file is too large (max 25MB per
-                            file)” come from the backend guardrails — users are encouraged to
+                            file)” come from backend constraints — users are encouraged to
                             compress or trim media before posting.
                         </p>
                     </Callout>
