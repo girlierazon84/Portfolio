@@ -11,6 +11,7 @@ import Image from "next/image";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import Pic01 from "../assets/images/Pic01.png";
 
+
 // =======================
 // Styled Components
 // =======================
@@ -238,7 +239,7 @@ const projects: Project[] = [
         link: "/projects/bookface",
         internal: true,
         description:
-            "Capstone MERN social platform with JWT-based auth, protected routes, profile customization, and media uploads (avatars, covers, post images/videos) via Cloudinary. Live app: https://bookface-fullstack-mern.vercel.app · Backend API: https://bookface-nwjl.onrender.com · GitHub: Bookface_Fullstack_MERN."
+            "Capstone MERN social platform with JWT-based authentication, protected routes, profile customization, and media uploads (avatars, covers, post images/videos) stored in Cloudinary and served via a Node/Express API and React + TypeScript frontend."
     },
     {
         title: "Big Mac Data Pipeline – CSV to SQL with Python",
