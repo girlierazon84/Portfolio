@@ -23,7 +23,6 @@ import ScatterMileageGearbox from "../../assets/images/Scatter-Plot-Car-Price-VS
 import AddedVariablePlots from "../../assets/images/Added-Variable-Plots.png";
 import MultiCollinearityAll from "../../assets/images/Check-All-Models-MultiCollinearity-Plots.png";
 
-
 /**----------------------
     Styled Components
 -------------------------*/
@@ -58,7 +57,7 @@ const Container = styled.div`
     color: var(--primary-color);
     display: flex;
     flex-direction: column;
-    gap: 1.75rem; /* tightened to reduce large vertical gaps */
+    gap: 1.75rem; /* tighter to avoid large vertical gaps */
 
     @media (max-width: 768px) {
         padding: 1.5rem;
@@ -131,7 +130,7 @@ const PillLink = styled.a`
 const Section = styled(motion.section)`
     display: flex;
     flex-direction: column;
-    gap: 0.85rem; /* slightly tighter section internal spacing */
+    gap: 0.85rem;
 
     h3 {
         font-size: 1.55rem;
@@ -388,12 +387,8 @@ const VolvoV60Analysis: React.FC = () => {
                 </Section>
 
                 {/* SCATTER PLOTS */}
-                <Section
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, delay: 0.15 }}
-                >
+                {/* Removed scroll-triggered animation here so this block always renders */}
+                <Section>
                     <h3>Horsepower, mileage, and price by fuel and gearbox</h3>
                     <p>
                         To separate engine and transmission effects, I plotted price against
