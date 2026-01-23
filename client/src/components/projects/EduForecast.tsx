@@ -605,9 +605,6 @@ const EduForecast: React.FC = () => {
                             <b>Forecast &amp; Costs</b> – births, cohorts, and education costs with a{" "}
                             <b>price basis selector</b>.
                         </li>
-                        <li>
-                            <b>Costs dashboard</b> – a focused view on cost levels and growth.
-                        </li>
                     </ul>
                     <p>
                         Overall, EduForecast turns SCB statistics into an interpretable, extensible
