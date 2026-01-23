@@ -344,18 +344,6 @@ const VolvoV60Analysis: React.FC = () => {
                             validation and testing.
                         </FigCaption>
                     </FigureBlock>
-
-                    <FigureBlock>
-                        <FigureImage
-                            src={DistPriceTrain}
-                            alt="Price distribution in the training set"
-                        />
-                        <FigCaption>
-                            <b>Figure 3.</b> Training-set distribution of <i>Price</i>. Most
-                            training examples fall in the 250k–360k SEK band, which is where the
-                            regression model will be most confident.
-                        </FigCaption>
-                    </FigureBlock>
                 </Section>
 
                 {/* RELATIONSHIPS & CORRELATIONS */}
