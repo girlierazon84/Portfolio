@@ -1,4 +1,5 @@
 // client/src/components/Project.tsx
+
 "use client";
 
 import React from "react";
@@ -161,7 +162,7 @@ const ProjectCard = styled(motion.div)`
         padding: 1rem;
 
         h3 {
-            font-size: 0.90rem;
+            font-size: 0.9rem;
         }
 
         p {
@@ -224,94 +225,95 @@ const projects: Project[] = [
         link: "/projects/trichmind",
         internal: true,
         description:
-            "Designed and implemented a machine learning pipeline (Logistic Regression, Random Forest, Gradient Boosting, MLP) to predict relapse risk from self-collected survey data, applying normalization and rigorous validation to handle a small sample size. Developed TrichMind, a MERN-stack application with a FastAPI-based ML backend for delivering these insights to users."
+            "TrichMind is my thesis project: a supervised ML pipeline (Logistic Regression, Random Forest, Gradient Boosting, MLP) that estimates relapse risk in trichotillomania from self-reported survey data, delivered via a MERN + FastAPI application."
     },
     {
-        title: "Education Cost Forecasting (Sweden, 2025–2035) - Python & ML",
-        link: "https://github.com/girlierazon84/Utbildningskostnader_Fodelsetal_Prognos",
+        title: "EduForecast – Education Costs & Birth Growth (Sweden, 1968–2030)",
+        link: "/projects/edu-forecast",
+        internal: true,
         description:
-            "Forecasted birth rates and education costs using ensemble models and LSTM with SCB data. Achieved R² > 0.95 and deployed via Streamlit."
+            "Python forecasting pipeline that models births per region, derives age 0–19 populations, and projects grundskola and gymnasieskola education costs in current vs fixed prices. Results power a Streamlit dashboard and CSV artifacts for policy-style analysis."
     },
     {
         title: "Big Mac Data Pipeline – CSV to SQL with Python",
         link: "https://github.com/girlierazon84/Kunskapskontroll_02_Pythonprogrammering",
         description:
-            "Built modular ETL pipeline with pandas + sqlite3. Added logging, error handling, and automated testing with scheduling support."
+            "Built a modular ETL pipeline with pandas and sqlite3. Added logging, error handling, unit tests, and scheduling support to keep the dataset fresh."
     },
     {
         title: "Face Expression, Age & Gender Recognition – Deep Learning",
         link: "https://github.com/girlierazon84/Deep_Learning_Kunskapskontroll_02",
         description:
-            "Developed CNNs for expression, age, and gender recognition. Achieved 77% accuracy (expression), 95% (gender), MAE 3.5 (age)."
+            "Developed CNNs for facial expression, age, and gender recognition. Achieved 77% accuracy (expression), 95% (gender), and MAE ≈ 3.5 years for age estimation."
     },
     {
         title: "Predicting Volvo V60 Car Prices – R Programming",
         link: "https://github.com/girlierazon84/Kunskapskontrollen_R_Programmering",
         description:
-            "Regression models in R explained 84.3% variance in car prices. RMSE ~32k–41k; gearbox variable showed marginal significance."
+            "Regression models in R explaining 84.3% of price variance. Evaluated RMSE, checked assumptions, and interpreted variables such as gearbox type and mileage."
     },
     {
         title: "Handwritten Digit Recognition – ML + Streamlit",
         link: "https://github.com/girlierazon84/ML_Kunskapskontroll_2",
         description:
-            "Streamlit app trained on MNIST dataset. Achieved 97.64% accuracy with SVM; added preprocessing, fine-tuning, and webcam input."
+            "Built a Streamlit app on MNIST with SVM and other models. Achieved 97.64% accuracy, added preprocessing, hyperparameter tuning, and interactive prediction."
     },
     {
         title: "Comprehensive Vendor Performance – Power BI",
         link: "/assets/pdf/VendorPerformanceMetrics.pdf",
         description:
-            "Built Power BI dashboards for vendor KPIs with drill-down, drill-through, and conditional formatting."
+            "Power BI dashboards for vendor KPIs with drill-down, drill-through, and conditional formatting for risk and performance monitoring."
     },
     {
         title: "Sales Insight Portal – Power BI",
         link: "/assets/pdf/SalesInsightPortal.pdf",
         description:
-            "Multi-page Power BI report analyzing sales trends and revenue. Optimized for business planning."
+            "Multi-page Power BI report analysing sales trends, revenue, and customer segments to support strategic planning."
     },
     {
         title: "Exploring AdventureWorks 2022 – Python & SQLAlchemy",
         link:
             "https://github.com/girlierazon84/SQL_Kunskapskontroll_AdventureWorks2022/blob/main/Kunskapskontroll_SQL_AdventureWorks2022_Database.ipynb",
         description:
-            "Analyzed AdventureWorks2022 with SQLAlchemy + Pandas. Produced summaries, visualizations, and statistical insights."
+            "Used SQLAlchemy and pandas to explore the AdventureWorks2022 database, producing descriptive stats, visualisations, and business-oriented insights."
     },
     {
         title: "Bookface – Full-Stack MERN Capstone",
         link: "https://github.com/girlierazon84/Bookface_Fullstack_MERN.git",
         description:
-            "MERN social media platform with authentication, CRUD, and real-time features."
+            "Social media platform built with the MERN stack, including authentication, CRUD posts, and real-time-style interactions."
     },
     {
         title: "Portfolio Website – HTML & CSS",
         link: "https://github.com/girlierazon84/Inl-mnings-Uppgift-01.git",
         description:
-            "Responsive portfolio site built with semantic HTML and CSS."
+            "Responsive portfolio site created with clean semantic HTML, CSS, and a focus on layout and accessibility."
     },
     {
         title: "Car Trip Cost Calculator – Agile + UI/UX",
         link:
             "https://github.com/girlierazon84/Inl-mningsUppgiftWebb2/tree/main/webb2-uppgift-2021-06-27",
         description:
-            "Travel cost calculator designed with Agile principles and UI/UX focus."
+            "Travel cost calculator designed using Agile practices. Focus on UI/UX flows, input validation, and clear summaries for the user."
     },
     {
         title: "My ToDo List – Full-Stack (Node.js + MongoDB)",
         link:
             "https://github.com/girlierazon84/My-TODO-List-Projekt-Front-and-Backend.git",
         description:
-            "Full-stack ToDo app using Node.js, Express, and MongoDB with CRUD operations."
+            "Full-stack ToDo application with Node.js, Express, and MongoDB, including CRUD operations and a simple UI layer."
     },
     {
         title: "Shopping Cart – JavaScript DOM",
         link: "https://github.com/girlierazon84/JSInlamningsUppgift1.git",
         description:
-            "JavaScript shopping cart with dynamic DOM manipulation and event handling."
+            "Vanilla JavaScript shopping cart exploring DOM manipulation, events, and basic state management in the browser."
     },
     {
         title: "Portfolio – MERN Stack (Personal Project)",
         link: "https://github.com/girlierazon84/Portfolio.git",
         description:
-            "Personal portfolio built with MERN stack, featuring authentication and CRUD."
+            "Earlier version of my personal portfolio built with the MERN stack, featuring authentication and protected admin views."
     }
 ];
 
