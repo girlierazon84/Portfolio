@@ -11,7 +11,6 @@ import Image from "next/image";
 import DSBackground from "../assets/images/DS_bg.jpg";
 import Pic01 from "../assets/images/Pic01.png";
 
-
 // =======================
 // Styled Components
 // =======================
@@ -218,7 +217,7 @@ type Project = {
     internal?: boolean;
 };
 
-// Sample project data
+// Project data
 const projects: Project[] = [
     {
         title: "Thesis – Predictive Modeling & App Development for Mental Health",
@@ -233,6 +232,13 @@ const projects: Project[] = [
         internal: true,
         description:
             "Python forecasting pipeline that models births per region, derives age 0–19 populations, and projects grundskola and gymnasieskola education costs in current vs fixed prices. Results power a Streamlit dashboard and CSV artifacts for policy-style analysis."
+    },
+    {
+        title: "BookFace – Full-Stack MERN Social App",
+        link: "/projects/bookface",
+        internal: true,
+        description:
+            "Capstone MERN social platform with JWT-based auth, protected routes, profile customization, and media uploads (avatars, covers, post images/videos) via Cloudinary. Live app: https://bookface-fullstack-mern.vercel.app · Backend API: https://bookface-nwjl.onrender.com · GitHub: Bookface_Fullstack_MERN."
     },
     {
         title: "Big Mac Data Pipeline – CSV to SQL with Python",
@@ -276,12 +282,6 @@ const projects: Project[] = [
             "https://github.com/girlierazon84/SQL_Kunskapskontroll_AdventureWorks2022/blob/main/Kunskapskontroll_SQL_AdventureWorks2022_Database.ipynb",
         description:
             "Used SQLAlchemy and pandas to explore the AdventureWorks2022 database, producing descriptive stats, visualisations, and business-oriented insights."
-    },
-    {
-        title: "Bookface – Full-Stack MERN Capstone",
-        link: "https://github.com/girlierazon84/Bookface_Fullstack_MERN.git",
-        description:
-            "Social media platform built with the MERN stack, including authentication, CRUD posts, and real-time-style interactions."
     },
     {
         title: "Portfolio Website – HTML & CSS",
