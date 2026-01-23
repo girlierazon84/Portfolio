@@ -177,6 +177,13 @@ const projects: Project[] = [
             "Capstone MERN social platform with JWT-based authentication, protected routes, profile customization, and media uploads (avatars, covers, post images/videos) stored in Cloudinary and served via a Node/Express API and React + TypeScript frontend."
     },
     {
+        title: "Predicting Volvo V60 Car Prices – Multiple Linear Regression (R)",
+        link: "/projects/volvo-v60-analysis",
+        internal: true,
+        description:
+            "Case study on 352 Volvo V60 listings (2018–2023) using multiple linear regression in R. Explains ~84% of price variance with model year, mileage, horsepower, fuel type, and gearbox, with RMSE around 32k–41k SEK across validation and test sets."
+    },
+    {
         title: "Big Mac Data Pipeline – CSV to SQL with Python",
         link: "https://github.com/girlierazon84/Kunskapskontroll_02_Pythonprogrammering",
         description:
@@ -187,12 +194,6 @@ const projects: Project[] = [
         link: "https://github.com/girlierazon84/Deep_Learning_Kunskapskontroll_02",
         description:
             "Developed CNNs for facial expression, age, and gender recognition. Achieved 77% accuracy (expression), 95% (gender), and MAE ≈ 3.5 years for age estimation."
-    },
-    {
-        title: "Predicting Volvo V60 Car Prices – R Programming",
-        link: "https://github.com/girlierazon84/Kunskapskontrollen_R_Programmering",
-        description:
-            "Regression models in R explaining 84.3% of price variance. Evaluated RMSE, checked assumptions, and interpreted variables such as gearbox type and mileage."
     },
     {
         title: "Handwritten Digit Recognition – ML + Streamlit",
